@@ -1,0 +1,291 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>【从0到元宇宙】图形学探索笔记 | Gridea</title>
+<link rel="shortcut icon" href="https://dupl.github.io/gridea/favicon.ico?v=1744703986223">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://dupl.github.io/gridea/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="【从0到元宇宙】图形学探索笔记 | Gridea - Atom Feed" href="https://dupl.github.io/gridea/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="Metaverse 突然很火，
+
+图形学涉及的领域：
+
+游戏 Video Games
+模拟 Simulation
+设计 Design
+字体 Typography（矢量）
+
+【必须】：高等数学（微积分、线性代数）、算法、数据结构
+【非必须】：..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dupl.github.io/gridea">
+  <img class="avatar" src="https://dupl.github.io/gridea/images/avatar.png?v=1744703986223" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://dupl.github.io/gridea" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              【从0到元宇宙】图形学探索笔记
+            </h2>
+            <div class="post-info">
+              <span>
+                2021-10-12
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p>Metaverse 突然很火，</p>
+<!-- more -->
+<p>图形学涉及的领域：</p>
+<ul>
+<li>游戏 Video Games</li>
+<li>模拟 Simulation</li>
+<li>设计 Design</li>
+<li>字体 Typography（矢量）</li>
+</ul>
+<p>【必须】：高等数学（微积分、线性代数）、算法、数据结构<br>
+【非必须】：信号处理、数值分析、大学物理（光学）</p>
+<p>图形学依赖那些基础学科：</p>
+<ul>
+<li>基础数学</li>
+<li>力学</li>
+<li>信号</li>
+<li>美学</li>
+</ul>
+<p>图形学包括的内容：</p>
+<ul>
+<li>数学计算</li>
+<li>物理</li>
+<li>渲染</li>
+<li>动画</li>
+</ul>
+<p>光栅化 Rasterization<br>
+曲线曲面 Curves and Meshes<br>
+光线追踪 Ray Tracing<br>
+动画/模拟 Animation、Simulation</p>
+<h2 id="线性代数-linear-algebra">线性代数  Linear Algebra</h2>
+<ul>
+<li>向量（矢量） Vectors  表示一个方向</li>
+<li>向量可以表示一个长度与方向</li>
+<li>我们并不关注向量的绝对起始位置</li>
+</ul>
+<h4 id="向量基本操作">向量基本操作</h4>
+<blockquote>
+<p>通过几何的方式来理解，也可以通过数学代数的方式来理解</p>
+</blockquote>
+<ul>
+<li>
+<p><strong>向量求和</strong></p>
+<ul>
+<li>平行四边形法则</li>
+<li>三角形法则</li>
+</ul>
+</li>
+<li>
+<p><strong>向量点积</strong> Dot product<br>
+可以快速算出两个向量的夹角<br>
+可以知道一个向量到另外一个向量的投影</p>
+</li>
+<li>
+<p><strong>向量插积</strong> Cross product<br>
+计算与原本两个向量都垂直的向量<br>
+可以判定左右<br>
+可以判定内外</p>
+</li>
+</ul>
+<h4 id="矩阵">矩阵</h4>
+<ul>
+<li>
+<p><strong>矩阵的乘积</strong><br>
+其实矩阵并不难<br>
+矩阵没有交换律<br>
+由结合律与分配率</p>
+<ul>
+<li>矩阵与向量相乘</li>
+</ul>
+</li>
+<li>
+<p>矩阵转置</p>
+</li>
+<li>
+<p>单位矩阵：矩阵与逆矩阵相乘为 单位矩阵（求逆矩阵）</p>
+</li>
+</ul>
+<p>向量点积，向量插积都可以转换为矩阵转换</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0-linear-algebra">线性代数  Linear Algebra</a><br>
+*
+<ul>
+<li><a href="#%E5%90%91%E9%87%8F%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C">向量基本操作</a></li>
+<li><a href="#%E7%9F%A9%E9%98%B5">矩阵</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dupl.github.io/gridea/post/2021-06-15-paper-2/">
+              <h3 class="post-title">
+                Nonequilibrium system–bath entanglement theorem versus heat transport
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b1b3d5e02fd883c8d79',
+    clientSecret: '7cd8d96a9db672953daac4c7219bb6d618cdd6a8',
+    repo: 'gridea',
+    owner: 'dupl',
+    admin: ['dupl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://dupl.github.io/gridea/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

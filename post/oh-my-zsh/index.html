@@ -1,0 +1,416 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>[程序员必做的100件事] 我是用的 oh-my-zsh 配置 | Gridea</title>
+<link rel="shortcut icon" href="https://dupl.github.io/gridea/favicon.ico?v=1744703986223">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://dupl.github.io/gridea/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="[程序员必做的100件事] 我是用的 oh-my-zsh 配置 | Gridea - Atom Feed" href="https://dupl.github.io/gridea/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="工欲善其事必先利其器,经过多年的大浪淘沙,似乎mac系中终端的选择迎来版本最终答案. oh-my-zsh. 这里记录一下简单的配置过程
+
+1. 安装
+GitHub:
+sh -c &quot;$(curl -fsSL https://raw...." />
+    <meta name="keywords" content="代码仓库" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dupl.github.io/gridea">
+  <img class="avatar" src="https://dupl.github.io/gridea/images/avatar.png?v=1744703986223" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://dupl.github.io/gridea" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              [程序员必做的100件事] 我是用的 oh-my-zsh 配置
+            </h2>
+            <div class="post-info">
+              <span>
+                2022-07-24
+              </span>
+              <span>
+                8 min read
+              </span>
+              
+                <a href="https://dupl.github.io/gridea/tag/mVTDsE9EcJ2/" class="post-tag">
+                  # 代码仓库
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="http://industry.wuriqilang.com/uPic/2022-07/WcniMW.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p>工欲善其事必先利其器,经过多年的大浪淘沙,似乎mac系中终端的选择迎来版本最终答案. oh-my-zsh. 这里记录一下简单的配置过程</p>
+<!-- more -->
+<h2 id="1-安装">1. 安装</h2>
+<p>GitHub:</p>
+<pre><code class="language-bash">sh -c &quot;$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&quot;
+</code></pre>
+<p>Gitee ( 国内镜像 )</p>
+<pre><code class="language-bash">sh -c &quot;$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)&quot;
+</code></pre>
+<h2 id="2设置主题">2.设置主题</h2>
+<ul>
+<li>打开配置文件</li>
+</ul>
+<pre><code class="language-bash">vim ~/.zshrc
+</code></pre>
+<ul>
+<li>修改主题： (推荐使用 robbyrussell)</li>
+</ul>
+<pre><code class="language-bash">ZSH_THEME=&quot;robbyrussell&quot;
+#可以改为
+ZSH_THEME=&quot;ys&quot;
+</code></pre>
+<ul>
+<li>加载配置</li>
+</ul>
+<pre><code class="language-bash">source ~/.zshrc
+</code></pre>
+<p>查看主题列表</p>
+<pre><code class="language-bash">~/.oh-my-zsh/themes &amp;&amp; ls
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://industry.wuriqilang.com/uPic/2022-07/2fnYv7.png" alt="THEMES" loading="lazy"></figure>
+<h2 id="3安装插件">3.安装插件</h2>
+<pre><code class="language-bash">vim ~/.zshrc
+</code></pre>
+<p>找到</p>
+<pre><code class="language-bash">plugins=(git)
+#改为
+plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
+</code></pre>
+<ul>
+<li>加载配置</li>
+</ul>
+<pre><code class="language-bash">source ~/.zshrc
+</code></pre>
+<p>加载配置时你会发现没有找到 zsh-syntax-highlighting zsh-autosuggestions 插件,下载方法:</p>
+<p>安装zsh-syntax-highlighting (高亮显示)</p>
+<pre><code class="language-bash">git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+</code></pre>
+<p>安装zsh-autosuggestions (自动提示,错误显示)</p>
+<pre><code class="language-bash">git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+</code></pre>
+<p>基本配置到这里就结束了,相信你的终端已经发生了让你开心的变化.</p>
+<h2 id="4进阶使用powerlevel10k打造一个专业的终端">4.进阶,使用powerlevel10k打造一个专业的终端</h2>
+<ul>
+<li>安装powerlevel10k</li>
+</ul>
+<pre><code class="language-bash">git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+</code></pre>
+<ul>
+<li>安装nerd字体(也可以不安装)<br>
+仅仅安装 powerlevel10k 是不够的，你还需要一个能够满足它的字体，包括各种特殊字符和图标（如上图）等，网络中使用最多的是 Hack Nerd Font 。<br>
+https://nerdfonts.com/</li>
+</ul>
+<p>推荐使用 source-code nerd-fonts   它长这样: https://www.programmingfonts.org/#source-code-pro</p>
+<figure data-type="image" tabindex="2"><img src="https://industry.wuriqilang.com/uPic/2022-07/MyP66Q.png" alt="" loading="lazy"></figure>
+<p>安装后需要做两件事:</p>
+<ol>
+<li>修改~/.zshrc中的ZSH_THEME=&quot;powerlevel10k/powerlevel10k&quot;，</li>
+<li>修改终端字体: Preferences &gt; Profile &gt; Text ；修改终端字体和Non-ASCII字体为Roboto Mono for Powerline(如果安装了nerd字体就可以选择nerd字体)</li>
+<li>修改VS Code字体 : SauceCodePro NF</li>
+</ol>
+<pre><code class="language-json">  &quot;editor.fontFamily&quot;: &quot;SauceCodePro NF, Menlo, Monaco, 'Courier New', monospace&quot;,
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="https://industry.wuriqilang.com/uPic/2022-07/4kaYkv.png" alt="" loading="lazy"></figure>
+<h2 id="5git插件">5.git插件</h2>
+<p>可以命令通过这里查看</p>
+<pre><code class="language-bash">vim ~/.oh-my-zsh/plugins/git/git.plugin.zsh
+</code></pre>
+<pre><code class="language-bash">alias ggpur='ggu'
+alias ggpull='git pull origin &quot;$(git_current_branch)&quot;'
+alias ggpush='git push origin &quot;$(git_current_branch)&quot;'
+
+alias ggsup='git branch --set-upstream-to=origin/$(git_current_branch)'
+alias gpsup='git push --set-upstream origin $(git_current_branch)'
+
+alias ghh='git help'
+
+alias gignore='git update-index --assume-unchanged'
+alias gignored='git ls-files -v | grep &quot;^[[:lower:]]&quot;'
+alias git-svn-dcommit-push='git svn dcommit &amp;&amp; git push github $(git_main_branch):svntrunk'
+
+alias gk='\gitk --all --branches &amp;!'
+alias gke='\gitk --all $(git log -g --pretty=%h) &amp;!'
+
+alias gl='git pull'
+alias glg='git log --stat'
+alias glgp='git log --stat -p'
+alias glgg='git log --graph'
+alias glgga='git log --graph --decorate --all'
+alias glgm='git log --graph --max-count=10'
+alias glo='git log --oneline --decorate'
+alias glol=&quot;git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)&lt;%an&gt;%Creset'&quot;
+alias glols=&quot;git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)&lt;%an&gt;%Creset' --stat&quot;
+alias glod=&quot;git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)&lt;%an&gt;%Creset'&quot;
+alias glods=&quot;git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ad) %C(bold blue)&lt;%an&gt;%Creset' --date=short&quot;
+alias glola=&quot;git log --graph --pretty='%Cred%h%Creset -%C(auto)%d%Creset %s %Cgreen(%ar) %C(bold blue)&lt;%an&gt;%Creset' --all&quot;
+alias glog='git log --oneline --decorate --graph'
+alias gloga='git log --oneline --decorate --graph --all'
+alias glp=&quot;_git_log_prettily&quot;
+
+alias gm='git merge'
+alias gmom='git merge origin/$(git_main_branch)'
+alias gmtl='git mergetool --no-prompt'
+alias gmtlvim='git mergetool --no-prompt --tool=vimdiff'
+alias gmum='git merge upstream/$(git_main_branch)'
+alias gma='git merge --abort'
+
+alias gp='git push'
+alias gpd='git push --dry-run'
+alias gpf='git push --force-with-lease'
+alias gpf!='git push --force'
+alias gpoat='git push origin --all &amp;&amp; git push origin --tags'
+alias gpr='git pull --rebase'
+alias gpu='git push upstream'
+alias gpv='git push -v'
+
+alias gr='git remote'
+alias gra='git remote add'
+alias grb='git rebase'
+alias grba='git rebase --abort'
+alias grbc='git rebase --continue'
+alias grbd='git rebase $(git_develop_branch)'
+alias grbi='git rebase -i'
+alias grbm='git rebase $(git_main_branch)'
+alias grbom='git rebase origin/$(git_main_branch)'
+alias grbo='git rebase --onto'
+alias grbs='git rebase --skip'
+alias grev='git revert'
+alias grh='git reset'
+alias grhh='git reset --hard'
+alias groh='git reset origin/$(git_current_branch) --hard'
+alias grm='git rm'
+alias grmc='git rm --cached'
+alias grmv='git remote rename'
+alias grrm='git remote remove'
+alias grs='git restore'
+alias grset='git remote set-url'
+alias grss='git restore --source'
+alias grst='git restore --staged'
+alias grt='cd &quot;$(git rev-parse --show-toplevel || echo .)&quot;'
+alias gru='git reset --'
+alias grup='git remote update'
+alias grv='git remote -v'
+
+alias gsb='git status -sb'
+alias gsd='git svn dcommit'
+alias gsh='git show'
+alias gsi='git submodule init'
+alias gsps='git show --pretty=short --show-signature'
+alias gsr='git svn rebase'
+alias gss='git status -s'
+alias gst='git status'
+
+# use the default stash push on git 2.13 and newer
+is-at-least 2.13 &quot;$git_version&quot; \
+  &amp;&amp; alias gsta='git stash push' \
+  || alias gsta='git stash save'
+
+alias gstaa='git stash apply'
+alias gstc='git stash clear'
+alias gstd='git stash drop'
+alias gstl='git stash list'
+alias gstp='git stash pop'
+alias gsts='git stash show --text'
+alias gstu='gsta --include-untracked'
+alias gstall='git stash --all'
+alias gsu='git submodule update'
+alias gsw='git switch'
+alias gswc='git switch -c'
+alias gswm='git switch $(git_main_branch)'
+alias gswd='git switch $(git_develop_branch)'
+
+alias gts='git tag -s'
+alias gtv='git tag | sort -V'
+alias gtl='gtl(){ git tag --sort=-v:refname -n -l &quot;${1}*&quot; }; noglob gtl'
+
+alias gunignore='git update-index --no-assume-unchanged'
+alias gunwip='git log -n 1 | grep -q -c &quot;\-\-wip\-\-&quot; &amp;&amp; git reset HEAD~1'
+alias gup='git pull --rebase'
+alias gupv='git pull --rebase -v'
+alias gupa='git pull --rebase --autostash'
+alias gupav='git pull --rebase --autostash -v'
+alias gupom='git pull --rebase origin $(git_main_branch)'
+alias gupomi='git pull --rebase=interactive origin $(git_main_branch)'
+alias glum='git pull upstream $(git_main_branch)'
+
+alias gwch='git whatchanged -p --abbrev-commit --pretty=medium'
+alias gwip='git add -A; git rm $(git ls-files --deleted) 2&gt; /dev/null; git commit --no-verify --no-gpg-sign -m &quot;--wip-- [skip ci]&quot;'
+
+alias gam='git am'
+alias gamc='git am --continue'
+alias gams='git am --skip'
+alias gama='git am --abort'
+alias gamscp='git am --show-current-patch'
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#1-%E5%AE%89%E8%A3%85">1. 安装</a></li>
+<li><a href="#2%E8%AE%BE%E7%BD%AE%E4%B8%BB%E9%A2%98">2.设置主题</a></li>
+<li><a href="#3%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6">3.安装插件</a></li>
+<li><a href="#4%E8%BF%9B%E9%98%B6%E4%BD%BF%E7%94%A8powerlevel10k%E6%89%93%E9%80%A0%E4%B8%80%E4%B8%AA%E4%B8%93%E4%B8%9A%E7%9A%84%E7%BB%88%E7%AB%AF">4.进阶,使用powerlevel10k打造一个专业的终端</a></li>
+<li><a href="#5git%E6%8F%92%E4%BB%B6">5.git插件</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dupl.github.io/gridea/post/sort/">
+              <h3 class="post-title">
+                【数据结构与算法】常用的几种排序
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b1b3d5e02fd883c8d79',
+    clientSecret: '7cd8d96a9db672953daac4c7219bb6d618cdd6a8',
+    repo: 'gridea',
+    owner: 'dupl',
+    admin: ['dupl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://dupl.github.io/gridea/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

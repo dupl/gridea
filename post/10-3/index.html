@@ -1,0 +1,281 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>10-3 | Gridea</title>
+<link rel="shortcut icon" href="https://dupl.github.io/gridea/favicon.ico?v=1744703986223">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://dupl.github.io/gridea/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="10-3 | Gridea - Atom Feed" href="https://dupl.github.io/gridea/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="三、属性的访问控制
+之前也有讲到过，Python 没有真正意义上的私有属性。然后这就导致了对 Python 类的封装性比较差。我们有时候会希望 Python 能够定义私有属性，然后提供公共可访问的 get 方法和 set 方法。Python..." />
+    <meta name="keywords" content="python" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dupl.github.io/gridea">
+  <img class="avatar" src="https://dupl.github.io/gridea/images/avatar.png?v=1744703986223" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://dupl.github.io/gridea" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              10-3
+            </h2>
+            <div class="post-info">
+              <span>
+                2025-02-20
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://dupl.github.io/gridea/tag/uIwvvo8-6A_/" class="post-tag">
+                  # python
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h1 id="三-属性的访问控制">三、属性的访问控制</h1>
+<p>之前也有讲到过，Python 没有真正意义上的私有属性。然后这就导致了对 Python 类的封装性比较差。我们有时候会希望 Python 能够定义私有属性，然后提供公共可访问的 get 方法和 set 方法。Python 其实可以通过魔术方法来实现封装。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>__getattr__(self, name)</code></td>
+<td>该方法定义了你试图访问一个不存在的属性时的行为。因此，重载该方法可以实现捕获错误拼写然后进行重定向, 或者对一些废弃的属性进行警告。</td>
+</tr>
+<tr>
+<td><code>__setattr__(self, name, value)</code></td>
+<td>定义了对属性进行赋值和修改操作时的行为。不管对象的某个属性是否存在,都允许为该属性进行赋值.有一点需要注意，实现 <code>__setattr__</code> 时要避免&quot;无限递归&quot;的错误，</td>
+</tr>
+<tr>
+<td><code>__delattr__(self, name)</code></td>
+<td><code>__delattr__</code> 与 <code>__setattr__</code> 很像，只是它定义的是你删除属性时的行为。实现 <code>__delattr__</code> 是同时要避免&quot;无限递归&quot;的错误</td>
+</tr>
+<tr>
+<td><code>__getattribute__(self, name)</code></td>
+<td><code>__getattribute__</code> 定义了你的属性被访问时的行为，相比较，<code>__getattr__</code> 只有该属性不存在时才会起作用。因此，在支持 <code>__getattribute__ </code>的 Python 版本,调用<code>__getattr__</code> 前必定会调用 <code>__getattribute__``__getattribute__</code> 同样要避免&quot;无限递归&quot;的错误。</td>
+</tr>
+</tbody>
+</table>
+<p>通过上面的方法表可以知道，在进行属性访问控制定义的时候你可能会很容易的引起一个错误，可以看看下面的示例：</p>
+<pre><code class="language-python">def __setattr__(self, name, value):
+    self.name = value
+    # 每当属性被赋值的时候， ``__setattr__()`` 会被调用，这样就造成了递归调用。
+    # 这意味这会调用 ``self.__setattr__('name', value)`` ，每次方法会调用自己。这样会造成程序崩溃。
+
+def __setattr__(self, name, value):
+    # 给类中的属性名分配值
+    self.__dict__[name] = value  
+    # 定制特有属性
+</code></pre>
+<p>上面方法的调用具体示例如下：</p>
+<pre><code class="language-python">#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
+
+class User(object):
+    def __getattr__(self, name):
+        print('调用了 __getattr__ 方法')
+        return super(User, self).__getattr__(name)
+
+    def __setattr__(self, name, value):
+        print('调用了 __setattr__ 方法')
+        return super(User, self).__setattr__(name, value)
+
+    def __delattr__(self, name):
+        print('调用了 __delattr__ 方法')
+        return super(User, self).__delattr__(name)
+
+    def __getattribute__(self, name):
+        print('调用了 __getattribute__ 方法')
+        return super(User, self).__getattribute__(name)
+
+
+if __name__ == '__main__':
+    user = User()
+    # 设置属性值，会调用 __setattr__
+    user.attr1 = True
+    # 属性存在,只有__getattribute__调用
+    user.attr1
+    try:
+        # 属性不存在, 先调用__getattribute__, 后调用__getattr__
+        user.attr2
+    except AttributeError:
+        pass
+    # __delattr__调用
+    del user.attr1
+
+</code></pre>
+<p>输出的结果：</p>
+<pre><code class="language-txt">调用了 __setattr__ 方法
+调用了 __getattribute__ 方法
+调用了 __getattribute__ 方法
+调用了 __getattr__ 方法
+调用了 __delattr__ 方法
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E4%B8%89-%E5%B1%9E%E6%80%A7%E7%9A%84%E8%AE%BF%E9%97%AE%E6%8E%A7%E5%88%B6">三、属性的访问控制</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dupl.github.io/gridea/post/10-2/">
+              <h3 class="post-title">
+                10-2
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b1b3d5e02fd883c8d79',
+    clientSecret: '7cd8d96a9db672953daac4c7219bb6d618cdd6a8',
+    repo: 'gridea',
+    owner: 'dupl',
+    admin: ['dupl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://dupl.github.io/gridea/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

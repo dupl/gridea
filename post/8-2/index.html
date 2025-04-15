@@ -1,0 +1,253 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>8-2 | Gridea</title>
+<link rel="shortcut icon" href="https://dupl.github.io/gridea/favicon.ico?v=1744703986223">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://dupl.github.io/gridea/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="8-2 | Gridea - Atom Feed" href="https://dupl.github.io/gridea/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="二、类的定义和调用
+1、怎么理解类？
+类是什么？
+个人认为理解类，最简单的方式就是：类是一个变量和函数的集合。
+可以看下下面的这张图。
+
+这张图很好的诠释了类，就是把变量和函数包装在一起。
+当然我们包装也不是毫无目的的包装，我们会把同性质的..." />
+    <meta name="keywords" content="python" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dupl.github.io/gridea">
+  <img class="avatar" src="https://dupl.github.io/gridea/images/avatar.png?v=1744703986223" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://dupl.github.io/gridea" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              8-2
+            </h2>
+            <div class="post-info">
+              <span>
+                2025-02-20
+              </span>
+              <span>
+                2 min read
+              </span>
+              
+                <a href="https://dupl.github.io/gridea/tag/uIwvvo8-6A_/" class="post-tag">
+                  # python
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h1 id="二-类的定义和调用">二、类的定义和调用</h1>
+<h2 id="1-怎么理解类">1、怎么理解类？</h2>
+<p>类是什么？</p>
+<p>个人认为理解类，最简单的方式就是：类是一个变量和函数的集合。</p>
+<p>可以看下下面的这张图。</p>
+<figure data-type="image" tabindex="1"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2020-03-09-014706.jpg" alt="" loading="lazy"></figure>
+<p>这张图很好的诠释了类，就是把变量和函数包装在一起。</p>
+<p>当然我们包装也不是毫无目的的包装，我们会把同性质的包装在一个类里，这样就方便我们重复使用。</p>
+<p>所以学到现在，你会发现很多编程的设计，都是为了我们能偷懒，重复使用。</p>
+<h2 id="2-怎么定义类">2、怎么定义类</h2>
+<p>知道了类是什么样子的，我们接下来就要学习怎么去定义类了。</p>
+<p>类定义语法格式如下：</p>
+<pre><code class="language-python">class ClassName():
+    &lt;statement-1&gt;
+    .
+    .
+    .
+    &lt;statement-N&gt;
+</code></pre>
+<p>可以看到，我们是用 <code>class</code> 语句来自定义一个类的，其实这就好比我们是用 <code>def</code> 语句来定义一个函数一样。</p>
+<p>竟然说类是变量和方法的集合包，那么我们来创建一个类。</p>
+<pre><code class="language-python">class ClassA():
+    var1 = 100
+    var2 = 0.01
+    var3 = '两点水'
+
+    def fun1():
+        print('我是 fun1')
+
+    def fun2():
+        print('我是 fun1')
+
+    def fun3():
+        print('我是 fun1')
+</code></pre>
+<p>你看，上面我们就定义了一个类，类名叫做 <code>ClassA</code> , 类里面的变量我们称之为属性，那么就是这个类里面有 3 个属性，分别是 <code>var1</code> , <code>var2</code> 和 <code>var3</code> 。除此之外，类里面还有 3 个类方法 <code>fun1()</code> , <code>fun2()</code> 和 <code>fun3()</code> 。</p>
+<h2 id="3-怎么调用类属性和类方法">3、怎么调用类属性和类方法</h2>
+<p>我们定义了类之后，那么我们怎么调用类里面的属性和方法呢？</p>
+<p>直接看下图：</p>
+<figure data-type="image" tabindex="2"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2020-03-09-014728.jpg" alt="" loading="lazy"></figure>
+<p>这里就不文字解释了（注：做图也不容易啊，只有写过技术文章才知道，这系列文章，多耗时）</p>
+<p>好了，知道怎么调用之后，我们尝试一下：</p>
+<figure data-type="image" tabindex="3"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2020-03-09-014742.jpg" alt="" loading="lazy"></figure>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E4%BA%8C-%E7%B1%BB%E7%9A%84%E5%AE%9A%E4%B9%89%E5%92%8C%E8%B0%83%E7%94%A8">二、类的定义和调用</a>
+<ul>
+<li><a href="#1-%E6%80%8E%E4%B9%88%E7%90%86%E8%A7%A3%E7%B1%BB">1、怎么理解类？</a></li>
+<li><a href="#2-%E6%80%8E%E4%B9%88%E5%AE%9A%E4%B9%89%E7%B1%BB">2、怎么定义类</a></li>
+<li><a href="#3-%E6%80%8E%E4%B9%88%E8%B0%83%E7%94%A8%E7%B1%BB%E5%B1%9E%E6%80%A7%E5%92%8C%E7%B1%BB%E6%96%B9%E6%B3%95">3、怎么调用类属性和类方法</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dupl.github.io/gridea/post/8-1/">
+              <h3 class="post-title">
+                8-1
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b1b3d5e02fd883c8d79',
+    clientSecret: '7cd8d96a9db672953daac4c7219bb6d618cdd6a8',
+    repo: 'gridea',
+    owner: 'dupl',
+    admin: ['dupl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://dupl.github.io/gridea/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

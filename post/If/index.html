@@ -1,0 +1,314 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>If | Gridea</title>
+<link rel="shortcut icon" href="https://dupl.github.io/gridea/favicon.ico?v=1744703986223">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://dupl.github.io/gridea/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="If | Gridea - Atom Feed" href="https://dupl.github.io/gridea/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="一、条件语句
+1、什么是条件语句
+Python 条件语句跟其他语言基本一致的，都是通过一条或多条语句的执行结果（ True 或者 False ）来决定执行的代码块。
+Python 程序语言指定任何非 0 和非空（null）值为 True，0..." />
+    <meta name="keywords" content="python" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dupl.github.io/gridea">
+  <img class="avatar" src="https://dupl.github.io/gridea/images/avatar.png?v=1744703986223" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://dupl.github.io/gridea" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              If
+            </h2>
+            <div class="post-info">
+              <span>
+                2025-02-20
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://dupl.github.io/gridea/tag/uIwvvo8-6A_/" class="post-tag">
+                  # python
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h1 id="一-条件语句">一、条件语句</h1>
+<h2 id="1-什么是条件语句">1、什么是条件语句</h2>
+<p>Python 条件语句跟其他语言基本一致的，都是通过一条或多条语句的执行结果（ True 或者 False ）来决定执行的代码块。</p>
+<p>Python 程序语言指定任何非 0 和非空（null）值为 True，0 或者 null 为 False。</p>
+<p>执行的流程图如下：</p>
+<figure data-type="image" tabindex="1"><img src="http://upload-images.jianshu.io/upload_images/2136918-4ee2486190450a1a?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="if语句流程图" loading="lazy"></figure>
+<h2 id="2-if-语句的基本形式">2、if 语句的基本形式</h2>
+<p>Python 中，if 语句的基本形式如下：</p>
+<pre><code class="language-python">if 判断条件：
+    执行语句……
+else：
+    执行语句……
+</code></pre>
+<p>之前的章节也提到过，Python 语言有着严格的缩进要求，因此这里也需要注意缩进，也不要少写了冒号 <code>:</code> 。</p>
+<p>if 语句的判断条件可以用&gt;（大于）、&lt;(小于)、==（等于）、&gt;=（大于等于）、&lt;=（小于等于）来表示其关系。</p>
+<p>例如：</p>
+<pre><code class="language-python"># -*-coding:utf-8-*-
+
+results=59
+
+if results&gt;=60:
+    print ('及格')
+else :
+    print ('不及格')
+
+</code></pre>
+<p>输出的结果为：</p>
+<pre><code class="language-txt">不及格
+</code></pre>
+<p>上面也说到，非零数值、非空字符串、非空 list 等，判断为 True，否则为 False。因此也可以这样写：</p>
+<pre><code class="language-python">num = 6
+if num :
+    print('Hello Python')
+</code></pre>
+<p>输出的结果如下：</p>
+<figure data-type="image" tabindex="2"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2019-09-07-072713.png" alt="" loading="lazy"></figure>
+<p>可见，把结果打印出来了。</p>
+<p>那如果我们把 <code>num </code> 改为空字符串呢？</p>
+<figure data-type="image" tabindex="3"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2019-09-07-072941.png" alt="" loading="lazy"></figure>
+<p>很明显，空字符串是为 False 的，不符合条件语句，因此不会执行到  <code>print('Hello Python')</code>  这段代码。</p>
+<p>还有再啰嗦一点，提醒一下，在条件判断代码中的冒号 <code>:</code> 后、下一行内容是一定要缩进的。不缩进是会报错的。</p>
+<figure data-type="image" tabindex="4"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2019-09-07-073432.png" alt="" loading="lazy"></figure>
+<p>冒号和缩进是一种语法。它会帮助 Python 区分代码之间的层次，理解条件执行的逻辑及先后顺序。</p>
+<h2 id="3-if-语句多个判断条件的形式">3、if 语句多个判断条件的形式</h2>
+<p>有些时候，我们的判断语句不可能只有两个，有些时候需要多个，比如上面的例子中大于 60 的为及格，那我们还要判断大于 90 的为优秀，在 80 到 90 之间的良好呢？</p>
+<p>这时候需要用到 if 语句多个判断条件，</p>
+<p>用伪代码来表示：</p>
+<pre><code class="language-python">if 判断条件1:
+    执行语句1……
+elif 判断条件2:
+    执行语句2……
+elif 判断条件3:
+    执行语句3……
+else:
+    执行语句4……
+</code></pre>
+<p>实例：</p>
+<pre><code class="language-python"># -*-coding:utf-8-*-
+
+results = 89
+
+if results &gt; 90:
+    print('优秀')
+elif results &gt; 80:
+    print('良好')
+elif results &gt; 60:
+    print ('及格')
+else :
+    print ('不及格')
+
+</code></pre>
+<p>输出的结果：</p>
+<pre><code class="language-txt">良好
+</code></pre>
+<h2 id="4-if-语句多个条件同时判断">4、if 语句多个条件同时判断</h2>
+<p>有时候我们会遇到多个条件的时候该怎么操作呢？</p>
+<p>比如说要求 java 和 python 的考试成绩要大于 80 分的时候才算优秀，这时候该怎么做？</p>
+<p>这时候我们可以结合 <code>or</code> 和  <code>and</code> 来使用。</p>
+<p>or （或）表示两个条件有一个成立时判断条件成功</p>
+<p>and （与）表示只有两个条件同时成立的情况下，判断条件才成功。</p>
+<p>例如：</p>
+<pre><code class="language-python"># -*-coding:utf-8-*-
+
+java = 86
+python = 68
+
+if java &gt; 80 and  python &gt; 80:
+    print('优秀')
+else :
+    print('不优秀')
+
+if ( java &gt;= 80  and java &lt; 90 )  or ( python &gt;= 80 and python &lt; 90):
+    print('良好')
+
+</code></pre>
+<p>输出结果：</p>
+<pre><code class="language-txt">不优秀
+良好
+</code></pre>
+<p>注意：if 有多个条件时可使用括号来区分判断的先后顺序，括号中的判断优先执行，此外 and 和 or 的优先级低于 &gt;（大于）、&lt;（小于）等判断符号，即大于和小于在没有括号的情况下会比与或要优先判断。</p>
+<h2 id="5-if-嵌套">5、if 嵌套</h2>
+<p>if 嵌套是指什么呢？</p>
+<p>就跟字面意思差不多，指 if 语句中可以嵌套 if 语句。</p>
+<p>比如上面说到的例子，也可以用 if 嵌套来写。</p>
+<figure data-type="image" tabindex="5"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2019-09-07-080557.png" alt="" loading="lazy"></figure>
+<p>当然这只是为了说明 if 条件语句是可以嵌套的。如果是这个需求，我个人还是不太建议这样使用 if 嵌套的，因为这样代码量多了，而且嵌套太多，也不方便阅读代码。</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E4%B8%80-%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5">一、条件语句</a>
+<ul>
+<li><a href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E6%9D%A1%E4%BB%B6%E8%AF%AD%E5%8F%A5">1、什么是条件语句</a></li>
+<li><a href="#2-if-%E8%AF%AD%E5%8F%A5%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BD%A2%E5%BC%8F">2、if 语句的基本形式</a></li>
+<li><a href="#3-if-%E8%AF%AD%E5%8F%A5%E5%A4%9A%E4%B8%AA%E5%88%A4%E6%96%AD%E6%9D%A1%E4%BB%B6%E7%9A%84%E5%BD%A2%E5%BC%8F">3、if 语句多个判断条件的形式</a></li>
+<li><a href="#4-if-%E8%AF%AD%E5%8F%A5%E5%A4%9A%E4%B8%AA%E6%9D%A1%E4%BB%B6%E5%90%8C%E6%97%B6%E5%88%A4%E6%96%AD">4、if 语句多个条件同时判断</a></li>
+<li><a href="#5-if-%E5%B5%8C%E5%A5%97">5、if 嵌套</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dupl.github.io/gridea/post/Set/">
+              <h3 class="post-title">
+                Set
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b1b3d5e02fd883c8d79',
+    clientSecret: '7cd8d96a9db672953daac4c7219bb6d618cdd6a8',
+    repo: 'gridea',
+    owner: 'dupl',
+    admin: ['dupl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://dupl.github.io/gridea/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

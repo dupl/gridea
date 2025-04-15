@@ -1,0 +1,305 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Set | Gridea</title>
+<link rel="shortcut icon" href="https://dupl.github.io/gridea/favicon.ico?v=1744703986223">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://dupl.github.io/gridea/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Set | Gridea - Atom Feed" href="https://dupl.github.io/gridea/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="二、set
+python 的 set 和其他语言类似, 是一个无序不重复元素集, 基本功能包括关系测试和消除重复元素。
+set 和 dict 类似，但是 set 不存储 value 值的。
+1、set 的创建
+创建一个 set，需要提供一个..." />
+    <meta name="keywords" content="python" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dupl.github.io/gridea">
+  <img class="avatar" src="https://dupl.github.io/gridea/images/avatar.png?v=1744703986223" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://dupl.github.io/gridea" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Set
+            </h2>
+            <div class="post-info">
+              <span>
+                2025-02-20
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://dupl.github.io/gridea/tag/uIwvvo8-6A_/" class="post-tag">
+                  # python
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h1 id="二-set">二、set</h1>
+<p>python 的 set 和其他语言类似, 是一个无序不重复元素集, 基本功能包括关系测试和消除重复元素。</p>
+<p>set 和 dict 类似，但是 set 不存储 value 值的。</p>
+<h2 id="1-set-的创建">1、set 的创建</h2>
+<p>创建一个 set，需要提供一个 list 作为输入集合</p>
+<pre><code class="language-python">set1=set([123,456,789])
+print(set1)
+</code></pre>
+<p>输出结果：</p>
+<pre><code>{456, 123, 789}
+</code></pre>
+<p>传入的参数 <code>[123,456,789]</code> 是一个 list，而显示的 <code>{456, 123, 789}</code> 只是告诉你这个 set 内部有 456, 123, 789 这 3 个元素，显示的顺序跟你参数中的 list 里的元素的顺序是不一致的，这也说明了 set 是无序的。</p>
+<p>还有一点，我们观察到输出的结果是在大括号中的，经过之前的学习，可以知道，tuple (元组) 使用小括号，list (列表) 使用方括号, dict (字典) 使用的是大括号，dict 也是无序的，只不过 dict 保存的是 key-value 键值对值，而 set 可以理解为只保存 key 值。</p>
+<p>回忆一下，在 dict （字典） 中创建时，有重复的 key ，会被后面的 key-value 值覆盖的，而 重复元素在 set 中自动被过滤的。</p>
+<pre><code class="language-python">set1=set([123,456,789,123,123])
+print(set1)
+</code></pre>
+<p>输出的结果：</p>
+<pre><code>{456, 123, 789}
+</code></pre>
+<h2 id="2-set-添加元素">2、set 添加元素</h2>
+<p>通过 add(key) 方法可以添加元素到 set 中，可以重复添加，但不会有效果</p>
+<pre><code class="language-python">set1=set([123,456,789])
+print(set1)
+set1.add(100)
+print(set1)
+set1.add(100)
+print(set1)
+</code></pre>
+<p>输出结果：</p>
+<pre><code>{456, 123, 789}
+{456, 123, 100, 789}
+{456, 123, 100, 789}
+</code></pre>
+<h2 id="3-set-删除元素">3、set 删除元素</h2>
+<p>通过 remove(key) 方法可以删除 set 中的元素</p>
+<pre><code class="language-python">set1=set([123,456,789])
+print(set1)
+set1.remove(456)
+print(set1)
+</code></pre>
+<p>输出的结果：</p>
+<pre><code>{456, 123, 789}
+{123, 789}
+</code></pre>
+<h2 id="4-set-的运用">4、set 的运用</h2>
+<p>因为 set 是一个无序不重复元素集，因此，两个 set 可以做数学意义上的 union(并集), intersection(交集), difference(差集) 等操作。</p>
+<figure data-type="image" tabindex="1"><img src="http://upload-images.jianshu.io/upload_images/2136918-733b1d1071f772bd?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="set集合运算" loading="lazy"></figure>
+<p>例子：</p>
+<pre><code class="language-python">set1=set('hello')
+set2=set(['p','y','y','h','o','n'])
+print(set1)
+print(set2)
+
+# 交集 (求两个 set 集合中相同的元素)
+set3=set1 &amp; set2
+print('\n交集 set3:')
+print(set3)
+# 并集 （合并两个 set 集合的元素并去除重复的值）
+set4=set1 | set2
+print('\n并集 set4:')
+print(set4)
+# 差集
+set5=set1 - set2
+set6=set2 - set1
+print('\n差集 set5:')
+print(set5)
+print('\n差集 set6:')
+print( set6)
+
+
+# 去除海量列表里重复元素，用 hash 来解决也行，只不过感觉在性能上不是很高，用 set 解决还是很不错的
+list1 = [111,222,333,444,111,222,333,444,555,666]  
+set7=set(list1)
+print('\n去除列表里重复元素 set7:')
+print(set7)
+
+</code></pre>
+<p>运行的结果：</p>
+<pre><code>{'h', 'l', 'e', 'o'}
+{'h', 'n', 'o', 'y', 'p'}
+
+交集 set3:
+{'h', 'o'}
+
+并集 set4:
+{'h', 'p', 'n', 'e', 'o', 'y', 'l'}
+
+差集 set5:
+{'l', 'e'}
+
+差集 set6:
+{'p', 'y', 'n'}
+
+去除列表里重复元素 set7:
+{555, 333, 111, 666, 444, 222}
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E4%BA%8C-set">二、set</a>
+<ul>
+<li><a href="#1-set-%E7%9A%84%E5%88%9B%E5%BB%BA">1、set 的创建</a></li>
+<li><a href="#2-set-%E6%B7%BB%E5%8A%A0%E5%85%83%E7%B4%A0">2、set 添加元素</a></li>
+<li><a href="#3-set-%E5%88%A0%E9%99%A4%E5%85%83%E7%B4%A0">3、set 删除元素</a></li>
+<li><a href="#4-set-%E7%9A%84%E8%BF%90%E7%94%A8">4、set 的运用</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dupl.github.io/gridea/post/Dict/">
+              <h3 class="post-title">
+                Dict
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b1b3d5e02fd883c8d79',
+    clientSecret: '7cd8d96a9db672953daac4c7219bb6d618cdd6a8',
+    repo: 'gridea',
+    owner: 'dupl',
+    admin: ['dupl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://dupl.github.io/gridea/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

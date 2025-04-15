@@ -1,0 +1,234 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Installation | Gridea</title>
+<link rel="shortcut icon" href="https://dupl.github.io/gridea/favicon.ico?v=1744703986223">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://dupl.github.io/gridea/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Installation | Gridea - Atom Feed" href="https://dupl.github.io/gridea/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="二、Python 的安装
+因为 Python 是跨平台的，它可以运行在 Windows、Mac 和各种 Linux/Unix 系统上。目前，Python 有两个版本，一个是 2.x 版，一个是 3.x版，这两个版本是不兼容的。本草根安装的是..." />
+    <meta name="keywords" content="python" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dupl.github.io/gridea">
+  <img class="avatar" src="https://dupl.github.io/gridea/images/avatar.png?v=1744703986223" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://dupl.github.io/gridea" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Installation
+            </h2>
+            <div class="post-info">
+              <span>
+                2025-02-20
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://dupl.github.io/gridea/tag/uIwvvo8-6A_/" class="post-tag">
+                  # python
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h1 id="二-python-的安装">二、Python 的安装</h1>
+<p>因为 Python 是跨平台的，它可以运行在 Windows、Mac 和各种 Linux/Unix 系统上。目前，Python 有两个版本，一个是 2.x 版，一个是 3.x版，这两个版本是不兼容的。本草根安装的是 3.6.1 版本的。</p>
+<p>至于在哪里下载，草根我建议大家最好直接官网下载，随时下载下来的都是最新版本。官网地址：<a href="https://www.python.org/">https://www.python.org/</a></p>
+<h2 id="1-windows-系统下安装配置">1、windows 系统下安装配置</h2>
+<p>如果是 windows 系统，下载完后，直接安装，不过这里记得勾上Add Python 3.6 to PATH，然后点 「Install Now」 即可完成安装。</p>
+<p>这里要注意了，记得把「Add Python 3.6 to Path」勾上，勾上之后就不需要自己配置环境变量了，如果没勾上，就要自己手动配置。</p>
+<figure data-type="image" tabindex="1"><img src="http://upload-images.jianshu.io/upload_images/2136918-2bf6591f0a12e80b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Python安装.png" loading="lazy"></figure>
+<p>如果你一时手快，忘记了勾上 「Add Python 3.6 to Path」，那也不要紧，只需要手动配置一下环境变量就好了。</p>
+<p>在命令提示框中 cmd  上输入 ：</p>
+<pre><code>path=%path%;C:\Python 
+</code></pre>
+<p>特别特别注意： <code>C:\Python</code> 是 Python 的安装目录，如果你的安装目录是其他地方，就得填上你对应的目录。</p>
+<p>安装完成后，打开命令提示符窗口，敲入 python 后，出现下面的情况，证明 Python 安装成功了。</p>
+<figure data-type="image" tabindex="2"><img src="http://upload-images.jianshu.io/upload_images/2136918-817c22f802e8cfce.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="运行python.png" loading="lazy"></figure>
+<p>而你看到提示符 <code>&gt;&gt;&gt;</code> 就表示我们已经在 Python 交互式环境中了，可以输入任何 Python 代码，回车后会立刻得到执行结果。</p>
+<h2 id="2-mac-系统下安装配置">2、Mac 系统下安装配置</h2>
+<p>MAC 系统一般都自带有 Python2.x 版本的环境，不过现在都不用 2.x 的版本了，所以建议你在 https://www.python.org/downloads/mac-osx/ 上下载最新版安装。</p>
+<p>安装完成之后，如何配置环境变量呢？</p>
+<p>先查看当前环境变量：</p>
+<pre><code>echo $PATH
+</code></pre>
+<p>然后打开 <code>~/.bash_profile(没有请新建)</code></p>
+<pre><code>vi ~/.bash_profile
+</code></pre>
+<p>我装的是 Python3.7 ，Python 执行路径为：<code>/Library/Frameworks/Python. Framework/Versions/3.7/bin</code> 。于是写入</p>
+<pre><code>export PATH=&quot;/Library/Frameworks/Python. Framework/Versions/3.7/bin:$PATH&quot;
+</code></pre>
+<figure data-type="image" tabindex="3"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2019-07-22-084149.png" alt="" loading="lazy"></figure>
+<p>最后保存退出，激活运行一下文件：</p>
+<pre><code>source ~/.bash_profile
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E4%BA%8C-python-%E7%9A%84%E5%AE%89%E8%A3%85">二、Python 的安装</a>
+<ul>
+<li><a href="#1-windows-%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE">1、windows 系统下安装配置</a></li>
+<li><a href="#2-mac-%E7%B3%BB%E7%BB%9F%E4%B8%8B%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE">2、Mac 系统下安装配置</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dupl.github.io/gridea/post/Introduction/">
+              <h3 class="post-title">
+                Introduction
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b1b3d5e02fd883c8d79',
+    clientSecret: '7cd8d96a9db672953daac4c7219bb6d618cdd6a8',
+    repo: 'gridea',
+    owner: 'dupl',
+    admin: ['dupl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://dupl.github.io/gridea/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

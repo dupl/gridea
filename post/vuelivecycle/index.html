@@ -1,0 +1,491 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>【前端拾遗】VUE的生命周期函数——详解 | Gridea</title>
+<link rel="shortcut icon" href="https://dupl.github.io/gridea/favicon.ico?v=1744703986223">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://dupl.github.io/gridea/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="【前端拾遗】VUE的生命周期函数——详解 | Gridea - Atom Feed" href="https://dupl.github.io/gridea/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="除了数据双向绑定、virtual Dom等偏向于底层实现的知识点外，vue的生命周期函数作为应用层层面里最核心的问题，其重要程度随着你的能力提升会不断提高。
+
+1.定义
+每个 Vue 实例在被创建时都要经过一系列的初始化过程——例如，需要设..." />
+    <meta name="keywords" content="vue,前端拾遗" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dupl.github.io/gridea">
+  <img class="avatar" src="https://dupl.github.io/gridea/images/avatar.png?v=1744703986223" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://dupl.github.io/gridea" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              【前端拾遗】VUE的生命周期函数——详解
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-06-01
+              </span>
+              <span>
+                7 min read
+              </span>
+              
+                <a href="https://dupl.github.io/gridea/tag/5z8YH8QS0xf/" class="post-tag">
+                  # vue
+                </a>
+              
+                <a href="https://dupl.github.io/gridea/tag/53hP3YKOud-/" class="post-tag">
+                  # 前端拾遗
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://dupl.github.io/gridea/post-images/vuelivecycle.jpg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p>除了数据双向绑定、virtual Dom等偏向于底层实现的知识点外，vue的生命周期函数作为应用层层面里最核心的问题，其重要程度随着你的能力提升会不断提高。</p>
+<!-- more -->
+<h2 id="1定义">1.定义</h2>
+<p>每个 Vue 实例在被创建时都要经过一系列的初始化过程——例如，需要设置数据监听、编译模板、将实例挂载到 DOM 并在数据变化时更新 DOM 等。同时在这个过程中也会运行一些叫做生命周期钩子的函数，这给了用户在不同阶段添加自己的代码的机会。</p>
+<figure data-type="image" tabindex="1"><img src="https://dupl.github.io/gridea/post-images/1590975920584.png" alt="" loading="lazy"></figure>
+<table>
+<thead>
+<tr>
+<th>生命周期钩子</th>
+<th>组件状态</th>
+<th>最佳实践</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>beforeCreate</td>
+<td>实例初始化之后，this指向创建的实例，不能访问到data、computed、watch、methdos上的方法和数据</td>
+<td>常用于初始化非响应式变量</td>
+</tr>
+<tr>
+<td>created</td>
+<td>实例创建完成，可访问data、computed、watch、methods上的方法和数据，未挂载到DOM，不能访问$el属性，$ref属性内容为空数组</td>
+<td>常用于简单的ajax请求，页面的初始化</td>
+</tr>
+<tr>
+<td>beforeMount</td>
+<td>在挂载开始之前被调用，beforeMount之前，会找对对应的template，并编译成render函数</td>
+<td>-</td>
+</tr>
+<tr>
+<td>mounted</td>
+<td>实例挂载到DOM上，此时可以通过DOM API获取到DOM节点，/$ref属性可以访问</td>
+<td>常用于获取VNode信息和操作，ajax请求</td>
+</tr>
+<tr>
+<td>beforeupdate</td>
+<td>响应式数据更新时调用，发生在虚拟DOM打补丁之前</td>
+<td>适合在更新之前访问现有的DOM，比如手动移除已添加的事件监听器</td>
+</tr>
+<tr>
+<td>updated</td>
+<td>虚拟DOM重新渲染和补丁之后调用，组件DOM已经更新，可以执行依赖于DOM的操作</td>
+<td>避免在这个钩子函数中操作数据，可能陷入死循环</td>
+</tr>
+<tr>
+<td>beforeDestroy</td>
+<td>实例销毁之前调用。这一步，实例仍然完全可用，this仍能获取到实例</td>
+<td>常用于销毁定时器、解绑全局事件、销毁插件对象等操作</td>
+</tr>
+<tr>
+<td>destroyed</td>
+<td>实例销毁后调用，调用后，Vue实例指示的所有东西都会解绑定，所有的事件监听器会被移除，所有的子实例也会被销毁</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>注意：</p>
+<ul>
+<li>created阶段的ajax请求与mounted请求的区别：前者页面视图未出现，如果请求信息过多，会导致页面长时间处于白屏状态。</li>
+</ul>
+<p>接下来我们从流程和代码两个方面来说明Vue的生命周期：</p>
+<h2 id="2vue生命周期流程">2.Vue生命周期流程</h2>
+<ol>
+<li>当我们创建一个Vue实例，即new Vue()，首先会执行init函数，在init函数中会执行第一个 beforeCreated钩子函数。
+<ul>
+<li>执行beforeCreate之前，先执行mergeOptions函数，得到/$options选项，并把这个设置成Vue实例的一个属性。</li>
+<li>beforeCreate，设个阶段生成生命周期以及一些数据的初始化。</li>
+</ul>
+</li>
+<li>接下来执行created：这个阶段数据已经绑定在实例上，但是还没有挂载对象。</li>
+<li>created之后，判断instance（实例）是否含有'el'这个options选项。
+<ul>
+<li>如果没有，它会调用vm./$mount(el) 这个方法，然后执行下一步，意味着它会停止编译，生命周期结束。</li>
+<li>如果有，判断是否含有template属性，如果有的话Vue将template解析成一个render function，如果没有template选项它将外部的HTML作为模板编译。</li>
+</ul>
+</li>
+<li>当render function之后才会执行beforeMounted，</li>
+</ol>
+<p>这里说的不明白， 以后重写</p>
+<h2 id="3-单个组件的生命周期">3. 单个组件的生命周期</h2>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div id='single'&gt;
+      &lt;h3&gt;单个组件的生命周期函数&lt;/h3&gt;
+      &lt;button @click=&quot;singleData+= 1&quot;&gt;更新{{singleData}}&lt;/button&gt;
+      &lt;button @click=&quot;handleDestroy&quot;&gt;销毁&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+    data(){
+        return{
+            singleData:1
+        }
+    },
+    //生命周期
+    beforeCreate(){
+        this.compName = 'single';  //定义非响应式变量
+        console.log(`--${this.compName}--befroeCreate`);
+    },
+    created() {
+        console.log(`--${this.compName}--created`)
+    },
+    beforeMount() {
+        console.log(`--${this.compName}--beforeMount`)
+    },
+    mounted() {
+        console.log(`--${this.compName}--mounted`)
+    },
+    beforeUpdate() {
+        console.log(`--${this.compName}--beforeUpdate`)
+    },
+    updated() {
+        console.log(`--${this.compName}--updated`)
+    },
+    beforeDestroy() {
+        console.log(`--${this.compName}--beforeDestroy`)
+    },
+    destroyed() {
+        console.log(`--${this.compName}--destroyed`)
+    },
+    methods:{
+        handleDestroy(){
+            this.$destroy();
+        }
+    }
+}
+&lt;/script&gt;
+</code></pre>
+<p>当组件加载与初始化时：</p>
+<figure data-type="image" tabindex="2"><img src="https://dupl.github.io/gridea/post-images/1590979391076.PNG" alt="" loading="lazy"></figure>
+<p>当更新组件时：</p>
+<blockquote>
+<p>--single--beforeUpdate<br>
+--single--updated</p>
+</blockquote>
+<p>组件销毁时：</p>
+<blockquote>
+<p>--single--beforeDestroy<br>
+--single--destroyed</p>
+</blockquote>
+<p>从结果我们可以看出：</p>
+<ol>
+<li>初始化组件时，仅执行了beforeCreate/Created/beforeMount/mounted四个钩子函数</li>
+<li>当改变data中定义的变量（响应式变量）时，会执行beforeUpdate/updated钩子函数</li>
+<li>当切换组件（当前组件未缓存）时，会执行beforeDestory/destroyed钩子函数</li>
+<li><strong>初始化和销毁时的生命钩子函数均只会执行一</strong>次，beforeUpdate/updated可多次执行</li>
+</ol>
+<h2 id="4父子组件之间传值">4.父子组件之间传值</h2>
+<p>父组件：</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div id='father'&gt;
+    &lt;button @click=&quot;handleDestroy&quot;&gt;父组件销毁&lt;/button&gt;
+    &lt;child compName='child'&gt;&lt;/child&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import  child  from &quot;../components/Child.vue&quot;;
+export default {
+  name:'Father',
+  components: {
+     child
+  },
+    //生命周期
+    beforeCreate() {
+    this.compName = 'father';  //定义非响应式变量
+    console.log(`--${this.compName}--befroeCreate`);
+  },
+  created() {
+    console.log(`--${this.compName}--created`)
+  },
+  beforeMount() {
+    console.log(`--${this.compName}--beforeMount`)
+  },
+  mounted() {
+    console.log(`--${this.compName}--mounted`)
+  },
+  beforeUpdate() {
+    console.log(`--${this.compName}--beforeUpdate`)
+  },
+  updated() {
+    console.log(`--${this.compName}--updated`)
+  },
+  beforeDestroy() {
+    console.log(`--${this.compName}--beforeDestroy`)
+  },
+  destroyed() {
+    console.log(`--${this.compName}--destroyed`)
+  },
+  methods: {
+    handleDestroy() {
+      this.$destroy();
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+<p>子组件：</p>
+<pre><code class="language-html">&lt;template&gt;
+  &lt;div id='child'&gt;
+      &lt;h3&gt;单个组件的生命周期函数&lt;/h3&gt;
+      &lt;button @click=&quot;singleData+= 1&quot;&gt;更新{{singleData}}&lt;/button&gt;
+      &lt;button @click=&quot;handleDestroy&quot;&gt;销毁&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+    name:'child',
+    props:{
+        compName:String
+    },
+    data(){
+        return{
+            singleData:1
+        }
+    },
+    //生命周期
+    beforeCreate(){
+        //this.compName = 'single';  //定义非响应式变量
+        console.log(`--props的值未获取，不知道compName是啥--befroeCreate`);
+    },
+    created() {
+        console.log(`--${this.compName}--created`)
+    },
+    beforeMount() {
+        console.log(`--${this.compName}--beforeMount`)
+    },
+    mounted() {
+        console.log(`--${this.compName}--mounted`)
+    },
+    beforeUpdate() {
+        console.log(`--${this.compName}--beforeUpdate`)
+    },
+    updated() {
+        console.log(`--${this.compName}--updated`)
+    },
+    beforeDestroy() {
+        console.log(`--${this.compName}--beforeDestroy`)
+    },
+    destroyed() {
+        console.log(`--${this.compName}--destroyed`)
+    },
+    methods:{
+        handleDestroy(){
+            this.$destroy();
+        }
+    }
+}
+&lt;/script&gt;
+</code></pre>
+<p>初始化组件时，打印：</p>
+<blockquote>
+<p>--father--befroeCreate<br>
+--father--created<br>
+--father--beforeMount<br>
+--props的值未获取，不知道compName是啥--befroeCreate<br>
+--child--created<br>
+--child--beforeMount<br>
+--child--mounted<br>
+--father--mounted<br>
+数据更新时<br>
+child--beforeUpdate<br>
+--child--updated<br>
+组件销毁时<br>
+--father--beforeDestroy<br>
+--child--beforeDestroy<br>
+--child--destroyed<br>
+--father--destroyed</p>
+</blockquote>
+<p>从打印结果可以看出:</p>
+<ol>
+<li>仅当子组件完成挂载后，父组件才会挂载</li>
+<li>当子组件完成挂载后，父组件会主动执行一次beforeUpdate/updated钩子函数（仅首次）</li>
+<li>父子组件在data变化中是分别监控的，但是在更新props中的数据是关联的（可实践）</li>
+<li>销毁父组件时，先将子组件销毁后才会销毁父组件</li>
+</ol>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#1%E5%AE%9A%E4%B9%89">1.定义</a></li>
+<li><a href="#2vue%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%B5%81%E7%A8%8B">2.Vue生命周期流程</a></li>
+<li><a href="#3-%E5%8D%95%E4%B8%AA%E7%BB%84%E4%BB%B6%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F">3. 单个组件的生命周期</a></li>
+<li><a href="#4%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E4%BC%A0%E5%80%BC">4.父子组件之间传值</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dupl.github.io/gridea/post/jiegou/">
+              <h3 class="post-title">
+                【实践数据结构与算法】一、几种最基础的数据结构
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b1b3d5e02fd883c8d79',
+    clientSecret: '7cd8d96a9db672953daac4c7219bb6d618cdd6a8',
+    repo: 'gridea',
+    owner: 'dupl',
+    admin: ['dupl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://dupl.github.io/gridea/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

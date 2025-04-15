@@ -1,0 +1,239 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>9-5 | Gridea</title>
+<link rel="shortcut icon" href="https://dupl.github.io/gridea/favicon.ico?v=1744703986223">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://dupl.github.io/gridea/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="9-5 | Gridea - Atom Feed" href="https://dupl.github.io/gridea/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="五、作用域
+学习过 Java 的同学都知道，Java 的类里面可以给方法和属性定义公共的（ public ）或者是私有的 （ private ）,这样做主要是为了我们希望有些函数和属性能给别人使用或者只能内部使用。
+通过学习 Python ..." />
+    <meta name="keywords" content="python" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dupl.github.io/gridea">
+  <img class="avatar" src="https://dupl.github.io/gridea/images/avatar.png?v=1744703986223" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://dupl.github.io/gridea" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              9-5
+            </h2>
+            <div class="post-info">
+              <span>
+                2025-02-20
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://dupl.github.io/gridea/tag/uIwvvo8-6A_/" class="post-tag">
+                  # python
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h1 id="五-作用域">五、作用域</h1>
+<p>学习过 Java 的同学都知道，Java 的类里面可以给方法和属性定义公共的（ public ）或者是私有的 （ private ）,这样做主要是为了我们希望有些函数和属性能给别人使用或者只能内部使用。</p>
+<p>通过学习 Python 中的模块，其实和 Java 中的类相似，那么我们怎么实现在一个模块中，有的函数和变量给别人使用，有的函数和变量仅仅在模块内部使用呢？</p>
+<p>在 Python 中，是通过 <code>_</code> 前缀来实现的。正常的函数和变量名是公开的（public），可以被直接引用，比如：abc，ni12，PI等；类似<code>__xxx__</code>这样的变量是特殊变量，可以被直接引用，但是有特殊用途，比如上面的 <code>__name__</code> 就是特殊变量，还有 <code>__author__</code> 也是特殊变量，用来标明作者。</p>
+<p>注意，我们自己的变量一般不要用这种变量名；类似 <code>_xxx</code> 和 <code>__xxx</code> 这样的函数或变量就是非公开的（private），不应该被直接引用，比如 <code>_abc</code> ，<code>__abc</code> 等；</p>
+<p><strong>这里是说不应该，而不是不能。因为 Python 种并没有一种方法可以完全限制访问 private 函数或变量，但是，从编程习惯上不应该引用 private 函数或变量。</strong></p>
+<p>比如：</p>
+<pre><code class="language-python">#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
+
+def _diamond_vip(lv):
+    print('尊敬的钻石会员用户，您好')
+    vip_name = 'DiamondVIP' + str(lv)
+    return vip_name
+
+
+def _gold_vip(lv):
+    print('尊敬的黄金会员用户，您好')
+    vip_name = 'GoldVIP' + str(lv)
+    return vip_name
+
+
+def vip_lv_name(lv):
+    if lv == 1:
+        print(_gold_vip(lv))
+    elif lv == 2:
+        print(_diamond_vip(lv))
+
+
+vip_lv_name(2)
+
+</code></pre>
+<p>输出的结果：</p>
+<pre><code class="language-txt">尊敬的钻石会员用户，您好
+DiamondVIP2
+</code></pre>
+<p>在这个模块中，我们公开 <code>vip_lv_name</code>  方法函数，而其他内部的逻辑分别在 <code>_diamond_vip</code> 和 <code>_gold_vip</code> private 函数中实现，因为是内部实现逻辑，调用者根本不需要关心这个函数方法，它只需关心调用 <code>vip_lv_name</code>  的方法函数，所以用 private 是非常有用的代码封装和抽象的方法</p>
+<p>一般情况下，外部不需要引用的函数全部定义成 private，只有外部需要引用的函数才定义为 public。</p>
+<hr>
+<p>最后扯淡，欢迎加我微信：<code>thinktoday2019</code>, 进入微信 Python 讨论群。</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E4%BA%94-%E4%BD%9C%E7%94%A8%E5%9F%9F">五、作用域</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dupl.github.io/gridea/post/9-4/">
+              <h3 class="post-title">
+                9-4
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b1b3d5e02fd883c8d79',
+    clientSecret: '7cd8d96a9db672953daac4c7219bb6d618cdd6a8',
+    repo: 'gridea',
+    owner: 'dupl',
+    admin: ['dupl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://dupl.github.io/gridea/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

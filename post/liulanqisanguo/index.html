@@ -1,0 +1,251 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>【前端拾遗】浏览器内核的三国风云 | Gridea</title>
+<link rel="shortcut icon" href="https://dupl.github.io/gridea/favicon.ico?v=1744703986223">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://dupl.github.io/gridea/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="【前端拾遗】浏览器内核的三国风云 | Gridea - Atom Feed" href="https://dupl.github.io/gridea/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+天下大势,分久必合,合久必分   ——  《三国演义》
+
+
+作为一名前端开发工程师，总会在各种文档的字里行间中看“内核”，“引擎”等名词，看了许多文章，仍然是对其中一些概念懵懵懂懂，譬如“Chromium和Blink是什么关系？Chrom..." />
+    <meta name="keywords" content="值得一读,前端拾遗" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dupl.github.io/gridea">
+  <img class="avatar" src="https://dupl.github.io/gridea/images/avatar.png?v=1744703986223" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://dupl.github.io/gridea" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              【前端拾遗】浏览器内核的三国风云
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-07-01
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://dupl.github.io/gridea/tag/AcJYc6Fzun/" class="post-tag">
+                  # 值得一读
+                </a>
+              
+                <a href="https://dupl.github.io/gridea/tag/53hP3YKOud-/" class="post-tag">
+                  # 前端拾遗
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://dupl.github.io/gridea/post-images/liulanqisanguo.PNG" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <blockquote>
+<p>天下大势,分久必合,合久必分   ——  《三国演义》</p>
+</blockquote>
+<!-- more -->
+<p>作为一名前端开发工程师，总会在各种文档的字里行间中看“内核”，“引擎”等名词，看了许多文章，仍然是对其中一些概念懵懵懂懂，譬如“Chromium和Blink是什么关系？Chromium和Chrome是什么关系？”这直接导致我给同事吹牛时底气不足。</p>
+<blockquote>
+<p>犹豫，就会败北。尤其是在吹牛的时候 ——  《只狼：影逝二度》</p>
+</blockquote>
+<figure data-type="image" tabindex="1"><img src="https://dupl.github.io/gridea/post-images/1593566832242.jpg" alt="" loading="lazy"></figure>
+<h2 id="一-最基本的概念浏览器内核引擎">一、最基本的概念：浏览器，内核，引擎</h2>
+<ul>
+<li>浏览器：用来检索、展示以及传递Web信息资源的应用程序。记住：<strong>浏览器是一种产品</strong>。譬如Chrome，Chromium，FirFox，Safiar，IE，360，QQ 。。。</li>
+<li>内核：驱动浏览器运行的核心部分。他包括<strong>JS引擎与渲染引擎</strong>。但是随着JS的发展，JS引擎也愈发显得独立于复杂，浏览器内核就倾向于单指渲染引擎。但就目前而言，多数浏览器内核仍然包括了JS引擎与渲染引擎（譬如Blink内核），为了便于理解，本文的观点是：<strong>内核包括JS引擎与渲染引擎</strong>。譬如Blink，Webkit，Gecko</li>
+<li>引擎：
+<ul>
+<li>JS引擎：专门处理JavaScript脚本的虚拟机（简单来说就是能够运行JS的环境）。</li>
+<li>渲染引擎（也可以叫排版引擎或图像引擎）：对HTML文档进行解析并将其显示在页面上的工具。</li>
+</ul>
+</li>
+</ul>
+<p>浏览器、内核、引擎的关系可以用下图所示：</p>
+<figure data-type="image" tabindex="2"><img src="https://dupl.github.io/gridea/post-images/1593573021116.png" alt="" loading="lazy"></figure>
+<p>还有一些遗失在前端发展历史进程中或者市场使用率很低的浏览器与内核（IE，EdgeHtml，Netscape ...) 为了文章简洁且具有现实意义，本文就不做讨论了，让我们向参与这些项目的程序员致敬。</p>
+<figure data-type="image" tabindex="3"><img src="https://dupl.github.io/gridea/post-images/1593573273158.jpg" alt="" loading="lazy"></figure>
+<h2 id="二-浏览器的三国大势">二、浏览器的三国大势</h2>
+<p>视频展示了 2009年到2020年各浏览器的市场占用情况，风云变幻，百家争鸣。<a href="https://www.bilibili.com/video/BV1iK41157eK?from=search&amp;seid=8186579024934449220">视频来源-bilibli Data_Fun</a></p>
+<div class="aspect-ratio">
+<iframe src="https://player.bilibili.com/player.html?aid=498000935&bvid=BV1iK41157eK&cid=187449223&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" sandbox="allow-top-navigation allow-same-origin allow-forms allow-scripts"> </iframe></div>
+<p>作为一名以解决问题为核心的工程师，我们不必关心浏览器战争背后的故事，我们知道就目前而言，对于前端开发者来说我们主要需要对Blink与Webkit内核的浏览器做适配就足够了（该结论写于2020.7.1）</p>
+<p>**未来？**随着Edge开始基于Chromium开发，浏览器内核的发展呈现逐渐一家独大的趋势。但是我们也应该看到为了应对移动端的发展，各家大厂也在研发新的浏览器，或是更加关注隐私（FireFox Focus），或是针对安卓进行了底层优化，亦或是针对自家生态的定制（微信x5）。<br>
+同时，随着Http3，WebAssembly，更快的网速，更复杂的WebApp交互需求，浏览器的变化仍未定型。身为一名开发工程师，我庆幸自己生活在这样一个时代。</p>
+<blockquote>
+<p>有时候，不确定就代表潜力。</p>
+</blockquote>
+<h2 id="三-为什么要写这篇文章">三、为什么要写这篇文章？</h2>
+<p>这篇文章似乎有一些标题党，其实我本身并不想讨论关于浏览器大战的细节与历史，这些历史也无法对实际工作产生比较大的作用，我仅仅是通过这篇文章来厘清浏览器、内核、引擎之间的关系。为后续研究浏览器内核渲染机制，乃至Vue Virtual Dom，nextTick的作用原理做铺垫。</p>
+<pre><code class="language-js">//TODO：完成浏览器渲染机制，Vue Virtual Dom，nextTick相关学习
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E4%B8%80-%E6%9C%80%E5%9F%BA%E6%9C%AC%E7%9A%84%E6%A6%82%E5%BF%B5%E6%B5%8F%E8%A7%88%E5%99%A8%E5%86%85%E6%A0%B8%E5%BC%95%E6%93%8E">一、最基本的概念：浏览器，内核，引擎</a></li>
+<li><a href="#%E4%BA%8C-%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84%E4%B8%89%E5%9B%BD%E5%A4%A7%E5%8A%BF">二、浏览器的三国大势</a></li>
+<li><a href="#%E4%B8%89-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%86%99%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0">三、为什么要写这篇文章？</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dupl.github.io/gridea/post/databind/">
+              <h3 class="post-title">
+                【前端拾遗】不写一遍总是记不住——Vue数据双向绑定
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b1b3d5e02fd883c8d79',
+    clientSecret: '7cd8d96a9db672953daac4c7219bb6d618cdd6a8',
+    repo: 'gridea',
+    owner: 'dupl',
+    admin: ['dupl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://dupl.github.io/gridea/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

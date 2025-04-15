@@ -1,0 +1,262 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>14-2 | Gridea</title>
+<link rel="shortcut icon" href="https://dupl.github.io/gridea/favicon.ico?v=1744703986223">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://dupl.github.io/gridea/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="14-2 | Gridea - Atom Feed" href="https://dupl.github.io/gridea/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="字符集
+好了，通过上面的几个实例我们初步认识了 Python 的正则表达式，可能你就会问，正则表达式还有什么规则，什么字母代表什么意思呢？
+其实，这些都不急，在本章后面会给出对应的正则表达式规则列表，而且这些东西在网上随便都能 Google..." />
+    <meta name="keywords" content="python" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dupl.github.io/gridea">
+  <img class="avatar" src="https://dupl.github.io/gridea/images/avatar.png?v=1744703986223" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://dupl.github.io/gridea" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              14-2
+            </h2>
+            <div class="post-info">
+              <span>
+                2025-02-20
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://dupl.github.io/gridea/tag/uIwvvo8-6A_/" class="post-tag">
+                  # python
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h1 id="字符集">字符集</h1>
+<p>好了，通过上面的几个实例我们初步认识了 Python 的正则表达式，可能你就会问，正则表达式还有什么规则，什么字母代表什么意思呢？</p>
+<p>其实，这些都不急，在本章后面会给出对应的正则表达式规则列表，而且这些东西在网上随便都能 Google 到。所以现在，我们还是进一步加深对正则表达式的理解，讲一下正则表达式的字符集。</p>
+<p>字符集是由一对方括号 “[]” 括起来的字符集合。使用字符集，可以匹配多个字符中的一个。</p>
+<p>举个例子，比如你使用 <code>C[ET]O</code> 匹配到的是 CEO 或 CTO ，也就是说 <code>[ET]</code> 代表的是一个 E 或者一个 T 。像上面提到的 <code>[a-z]</code> ,就是所有小写字母中的其中一个，这里使用了连字符 “-” 定义一个连续字符的字符范围。当然，像这种写法，里面可以包含多个字符范围的，比如：<code>[0-9a-fA-F]</code> ,匹配单个的十六进制数字，且不分大小写。注意了，字符和范围定义的先后顺序对匹配的结果是没有任何影响的。</p>
+<p>其实说了那么多，只是想证明，字符集一对方括号 “[]” 里面的字符关系是&quot;或（OR）&quot;关系，下面看一个例子：</p>
+<pre><code class="language-Python">
+import re
+a = 'uav,ubv,ucv,uwv,uzv,ucv,uov'
+
+# 字符集
+
+# 取 u 和 v 中间是 a 或 b 或 c 的字符
+findall = re.findall('u[abc]v', a)
+print(findall)
+# 如果是连续的字母，数字可以使用 - 来代替
+l = re.findall('u[a-c]v', a)
+print(l)
+
+# 取 u 和 v 中间不是 a 或 b 或 c 的字符
+re_findall = re.findall('u[^abc]v', a)
+print(re_findall)
+
+</code></pre>
+<p>输出的结果：</p>
+<pre><code class="language-txt">['uav', 'ubv', 'ucv', 'ucv']
+['uav', 'ubv', 'ucv', 'ucv']
+['uwv', 'uzv', 'uov']
+</code></pre>
+<p>在例子中，使用了取反字符集，也就是在左方括号 “[” 后面紧跟一个尖括号 “^”，就会对字符集取反。需要记住的一点是，取反字符集必须要匹配一个字符。比如：<code>q[^u]</code> 并不意味着：匹配一个 q，后面没有 u 跟着。它意味着：匹配一个 q，后面跟着一个不是 u 的字符。具体可以对比上面例子中输出的结果来理解。</p>
+<p>我们都知道，正则表达式本身就定义了一些规则，比如 <code>\d</code>,匹配所有数字字符,其实它是等价于 [0-9]，下面也写了个例子，通过字符集的形式解释了这些特殊字符。</p>
+<pre><code class="language-Python">import re
+
+a = 'uav_ubv_ucv_uwv_uzv_ucv_uov&amp;123-456-789'
+
+# 概括字符集
+
+# \d 相当于 [0-9] ,匹配所有数字字符
+# \D 相当于 [^0-9] ， 匹配所有非数字字符
+findall1 = re.findall('\d', a)
+findall2 = re.findall('[0-9]', a)
+findall3 = re.findall('\D', a)
+findall4 = re.findall('[^0-9]', a)
+print(findall1)
+print(findall2)
+print(findall3)
+print(findall4)
+
+# \w 匹配包括下划线的任何单词字符，等价于 [A-Za-z0-9_]
+findall5 = re.findall('\w', a)
+findall6 = re.findall('[A-Za-z0-9_]', a)
+print(findall5)
+print(findall6)
+
+</code></pre>
+<p>输出结果：</p>
+<pre><code class="language-txt">['1', '2', '3', '4', '5', '6', '7', '8', '9']
+['1', '2', '3', '4', '5', '6', '7', '8', '9']
+['u', 'a', 'v', '_', 'u', 'b', 'v', '_', 'u', 'c', 'v', '_', 'u', 'w', 'v', '_', 'u', 'z', 'v', '_', 'u', 'c', 'v', '_', 'u', 'o', 'v', '&amp;', '-', '-']
+['u', 'a', 'v', '_', 'u', 'b', 'v', '_', 'u', 'c', 'v', '_', 'u', 'w', 'v', '_', 'u', 'z', 'v', '_', 'u', 'c', 'v', '_', 'u', 'o', 'v', '&amp;', '-', '-']
+['u', 'a', 'v', '_', 'u', 'b', 'v', '_', 'u', 'c', 'v', '_', 'u', 'w', 'v', '_', 'u', 'z', 'v', '_', 'u', 'c', 'v', '_', 'u', 'o', 'v', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+['u', 'a', 'v', '_', 'u', 'b', 'v', '_', 'u', 'c', 'v', '_', 'u', 'w', 'v', '_', 'u', 'z', 'v', '_', 'u', 'c', 'v', '_', 'u', 'o', 'v', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E5%AD%97%E7%AC%A6%E9%9B%86">字符集</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dupl.github.io/gridea/post/14-1/">
+              <h3 class="post-title">
+                14-1
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b1b3d5e02fd883c8d79',
+    clientSecret: '7cd8d96a9db672953daac4c7219bb6d618cdd6a8',
+    repo: 'gridea',
+    owner: 'dupl',
+    admin: ['dupl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://dupl.github.io/gridea/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

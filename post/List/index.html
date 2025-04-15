@@ -1,0 +1,459 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>List | Gridea</title>
+<link rel="shortcut icon" href="https://dupl.github.io/gridea/favicon.ico?v=1744703986223">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://dupl.github.io/gridea/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="List | Gridea - Atom Feed" href="https://dupl.github.io/gridea/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="一、List（列表）
+1、什么是 List （列表）
+List （列表）是 Python 内置的一种数据类型。 它是一种有序的集合，可以随时添加和删除其中的元素。
+那为什么要有 List （列表）呢？
+我们用一个例子来说明。
+现在有一个团队..." />
+    <meta name="keywords" content="python" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dupl.github.io/gridea">
+  <img class="avatar" src="https://dupl.github.io/gridea/images/avatar.png?v=1744703986223" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://dupl.github.io/gridea" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              List
+            </h2>
+            <div class="post-info">
+              <span>
+                2025-02-20
+              </span>
+              <span>
+                8 min read
+              </span>
+              
+                <a href="https://dupl.github.io/gridea/tag/uIwvvo8-6A_/" class="post-tag">
+                  # python
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h1 id="一-list列表">一、List（列表）</h1>
+<h2 id="1-什么是-list-列表">1、什么是 List （列表）</h2>
+<p>List （列表）是 Python 内置的一种数据类型。 它是一种有序的集合，可以随时添加和删除其中的元素。</p>
+<p>那为什么要有 List （列表）呢？</p>
+<p>我们用一个例子来说明。</p>
+<p>现在有一个团队要出去玩，要先报名。如果用我们之前学过的知识，那么就是用一个字符串变量把他们都记录起来。</p>
+<figure data-type="image" tabindex="1"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2019-08-31-080527.png" alt="" loading="lazy"></figure>
+<p>但是这样太麻烦了，而且也不美观。</p>
+<p>在编程中，一定要学会偷懒，避免「重复性工作」。如果有一百个成员，那么你及时是复制粘贴，也会把你写烦。</p>
+<p>这时候就可以使用列表了。</p>
+<figure data-type="image" tabindex="2"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2019-08-31-080835.png" alt="" loading="lazy"></figure>
+<p>就这样，一行代码就可以存放 N 多个名字了。</p>
+<h2 id="2-怎么创建-list列表">2、怎么创建 List（列表）</h2>
+<p>从上面的例子可以分析出，列表的格式是这样的。</p>
+<figure data-type="image" tabindex="3"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2019-08-31-081342.png" alt="" loading="lazy"></figure>
+<p>其实列表就是用中括号 <code>[]</code> 括起来的数据，里面的每一个数据就叫做元素。每个元素之间使用逗号分隔。</p>
+<p>而且列表的数据元素不一定是相同的数据类型。</p>
+<p>比如：</p>
+<pre><code class="language-python">list1=['两点水','twowter','liangdianshui',123]
+</code></pre>
+<p>这里有字符串类型，还有整数类型。</p>
+<p>我们尝试把他打印出来，看看打印的结果是怎样的。</p>
+<figure data-type="image" tabindex="4"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2019-08-31-081912.png" alt="" loading="lazy"></figure>
+<p>结果如下：</p>
+<figure data-type="image" tabindex="5"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2019-08-31-081951.png" alt="" loading="lazy"></figure>
+<h2 id="3-如何访问-list列表中的值">3、如何访问 List（列表）中的值</h2>
+<p>就像一开始的例子，我们有时候不需要把全部人员的姓名都打印出来，有时候我们需要知道第 3 个报名的人是谁？前两名报名的是谁？</p>
+<p>那么怎么从列表中取出来呢？</p>
+<p>换种问法就是，怎么去访问列表中的值？</p>
+<p>这时候我们可以通过列表的下标索引来访问列表中的值，同样你也可以使用方括号的形式截取字符。</p>
+<p>例如：</p>
+<pre><code class="language-python">name = ['一点水', '两点水', '三点水', '四点水', '五点水']
+
+# 通过索引来访问列表
+print(name[2])
+# 通过方括号的形式来截取列表中的数据
+print(name[0:2])
+</code></pre>
+<p>输出的结果：</p>
+<figure data-type="image" tabindex="6"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2019-08-31-090321.png" alt="" loading="lazy"></figure>
+<p>可见，我们需要知道知道 <code>name</code> 这个列表中第三个报名的是谁？只需要用 <code>name[2]</code>  就可以了。</p>
+<p>这里你会问，为什么是 2 ，不是 3 呢？</p>
+<p>这是因为在编程世界中，都是从 0 开始的，而不是我们生活习惯中从 1 开始。</p>
+<p>所以需要知道第三个是谁？</p>
+<p>那就是  <code>name[2]</code>  就可以了。</p>
+<p>从例子来看，我们还把 <code>name[0:2]</code> 的结果打印出来了。</p>
+<p>从打印结果来看，只打印了第一，第二个元素内容。</p>
+<p>这里可能会有疑问？</p>
+<p>为什么不是打印前三个啊，不是说 2 就是第 3 个吗？</p>
+<p>那是因为这是<strong>左闭右开</strong>区间的。</p>
+<p>所以 <code>name[0:2]</code> 的意思就是从第 0 个开始取，取到第 2 个，但是不包含第 2 个。</p>
+<p>还是那句话，为了更好的理解，可以多去尝试，多去玩编程。</p>
+<p>所以你可以尝试下下面的各种方式：</p>
+<figure data-type="image" tabindex="7"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2019-08-31-091524.png" alt="" loading="lazy"></figure>
+<p>看看输出的结果：</p>
+<figure data-type="image" tabindex="8"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2019-08-31-091624.png" alt="" loading="lazy"></figure>
+<p>根据输出的结果和上面讲到的知识，就很容易理解其中的一些用法了。</p>
+<pre><code>## 4、怎么去更新 List（列表） ##
+</code></pre>
+<p>还是一开始的例子，我们用代码记录了报名人的名字，那后面可能会有新人加入，也有可能会发现一开始写错名字了，想要修改。</p>
+<p>这时候怎么办呢？</p>
+<p>这时候可以通过索引对列表的数据项进行修改或更新，也可以使用 append() 方法来添加列表项。</p>
+<pre><code class="language-python">name = ['一点水', '两点水', '三点水', '四点水', '五点水']
+
+
+# 通过索引对列表的数据项进行修改或更新
+name[1]='2点水'
+print(name)
+
+# 使用 append() 方法来添加列表项
+name.append('六点水')
+print(name)
+</code></pre>
+<p>输出的结果：</p>
+<figure data-type="image" tabindex="9"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2019-08-31-092406.png" alt="" loading="lazy"></figure>
+<h2 id="5-怎么删除-list列表-里面的元素">5、怎么删除 List（列表） 里面的元素</h2>
+<p>那既然这样，肯定会有人中途退出的。</p>
+<p>那么我们就需要在列表中，把他的名字去掉。</p>
+<p>这时候使用 del 语句来删除列表的的元素</p>
+<pre><code class="language-python">name = ['一点水', '两点水', '三点水', '四点水', '五点水']
+
+print(name)
+
+# 使用 del 语句来删除列表的的元素
+del name[3]
+print(name)
+</code></pre>
+<p>输出的结果:</p>
+<figure data-type="image" tabindex="10"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2019-08-31-092705.png" alt="" loading="lazy"></figure>
+<p>你看输出的结果，列表中已经没有了 <code>四点水</code> 这个数据了。证明已经删除成功了。</p>
+<h2 id="6-list列表运算符">6、List（列表）运算符</h2>
+<p>列表对 <code>+</code>  和 <code>*</code>  的操作符与字符串相似。<code>+</code> 号用于组合列表，<code>*</code>  号用于重复列表。</p>
+<table>
+<thead>
+<tr>
+<th>Python 表达式</th>
+<th>结果</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>len([1, 2, 3])</td>
+<td>3</td>
+<td>计算元素个数</td>
+</tr>
+<tr>
+<td>[1, 2, 3] + [4, 5, 6]</td>
+<td>[1, 2, 3, 4, 5, 6]</td>
+<td>组合</td>
+</tr>
+<tr>
+<td>['Hi!'] * 4</td>
+<td>['Hi!', 'Hi!', 'Hi!', 'Hi!']</td>
+<td>复制</td>
+</tr>
+<tr>
+<td>3 in [1, 2, 3]</td>
+<td>True</td>
+<td>元素是否存在于列表中</td>
+</tr>
+<tr>
+<td>for x in [1, 2, 3]: print x,</td>
+<td>1 2 3</td>
+<td>迭代</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-list-列表函数方法">7、List （列表）函数&amp;方法</h2>
+<table>
+<thead>
+<tr>
+<th>函数&amp;方法</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>len(list)</td>
+<td>列表元素个数</td>
+</tr>
+<tr>
+<td>max(list)</td>
+<td>返回列表元素最大值</td>
+</tr>
+<tr>
+<td>min(list)</td>
+<td>返回列表元素最小值</td>
+</tr>
+<tr>
+<td>list(seq)</td>
+<td>将元组转换为列表</td>
+</tr>
+<tr>
+<td>list.append(obj)</td>
+<td>在列表末尾添加新的对象</td>
+</tr>
+<tr>
+<td>list.count(obj)</td>
+<td>统计某个元素在列表中出现的次数</td>
+</tr>
+<tr>
+<td>list.extend(seq)</td>
+<td>在列表末尾一次性追加另一个序列中的多个值（用新列表扩展原来的列表）</td>
+</tr>
+<tr>
+<td>list.index(obj)</td>
+<td>从列表中找出某个值第一个匹配项的索引位置</td>
+</tr>
+<tr>
+<td>list.insert(index, obj)</td>
+<td>将对象插入列表</td>
+</tr>
+<tr>
+<td>list.pop(obj=list[-1])</td>
+<td>移除列表中的一个元素（默认最后一个元素），并且返回该元素的值</td>
+</tr>
+<tr>
+<td>list.remove(obj)</td>
+<td>移除列表中的一个元素（参数是列表中元素），并且不返回任何值</td>
+</tr>
+<tr>
+<td>list.reverse()</td>
+<td>反向列表中元素</td>
+</tr>
+<tr>
+<td>list.sort([func])</td>
+<td>对原列表进行排序</td>
+</tr>
+</tbody>
+</table>
+<h2 id="8-实例">8、实例</h2>
+<p>最后通过一个例子来熟悉了解 List 的操作</p>
+<p>例子：</p>
+<pre><code class="language-python">#-*-coding:utf-8-*-
+#-----------------------list的使用----------------------------------
+
+# 1.一个产品，需要列出产品的用户，这时候就可以使用一个 list 来表示
+user=['liangdianshui','twowater','两点水']
+print('1.产品用户')
+print(user)
+
+# 2.如果需要统计有多少个用户，这时候 len() 函数可以获的 list 里元素的个数
+len(user)
+print('\n2.统计有多少个用户')
+print(len(user))
+
+# 3.此时，如果需要知道具体的用户呢？可以用过索引来访问 list 中每一个位置的元素，索引是0从开始的
+print('\n3.查看具体的用户')
+print(user[0]+','+user[1]+','+user[2])
+
+# 4.突然来了一个新的用户，这时我们需要在原有的 list 末尾加一个用户
+user.append('茵茵')
+print('\n4.在末尾添加新用户')
+print(user)
+
+# 5.又新增了一个用户，可是这个用户是 VIP 级别的学生，需要放在第一位，可以通过 insert 方法插入到指定的位置
+# 注意：插入数据的时候注意是否越界，索引不能超过 len(user)-1
+user.insert(0,'VIP用户')
+print('\n5.指定位置添加用户')
+print(user)
+
+# 6.突然发现之前弄错了，“茵茵”就是'VIP用户'，因此，需要删除“茵茵”；pop() 删除 list 末尾的元素
+user.pop()
+print('\n6.删除末尾用户')
+print(user)
+
+# 7.过了一段时间，用户“liangdianshui”不玩这个产品，删除了账号
+# 因此需要要删除指定位置的元素，用pop(i)方法，其中i是索引位置
+user.pop(1)
+print('\n7.删除指定位置的list元素')
+print(user)
+
+# 8.用户“两点水”想修改自己的昵称了
+user[2]='三点水'
+print('\n8.把某个元素替换成别的元素')
+print(user)
+
+# 9.单单保存用户昵称好像不够好，最好把账号也放进去
+# 这里账号是整数类型，跟昵称的字符串类型不同，不过 list 里面的元素的数据类型是可以不同的
+# 而且 list 元素也可以是另一个 list
+newUser=[['VIP用户',11111],['twowater',22222],['三点水',33333]]
+print('\n9.不同元素类型的list数据')
+print(newUser)
+
+</code></pre>
+<figure data-type="image" tabindex="11"><img src="http://upload-images.jianshu.io/upload_images/2136918-65d31cae9f8bb34d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="list的使用" loading="lazy"></figure>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E4%B8%80-list%E5%88%97%E8%A1%A8">一、List（列表）</a>
+<ul>
+<li><a href="#1-%E4%BB%80%E4%B9%88%E6%98%AF-list-%E5%88%97%E8%A1%A8">1、什么是 List （列表）</a></li>
+<li><a href="#2-%E6%80%8E%E4%B9%88%E5%88%9B%E5%BB%BA-list%E5%88%97%E8%A1%A8">2、怎么创建 List（列表）</a></li>
+<li><a href="#3-%E5%A6%82%E4%BD%95%E8%AE%BF%E9%97%AE-list%E5%88%97%E8%A1%A8%E4%B8%AD%E7%9A%84%E5%80%BC">3、如何访问 List（列表）中的值</a></li>
+<li><a href="#5-%E6%80%8E%E4%B9%88%E5%88%A0%E9%99%A4-list%E5%88%97%E8%A1%A8-%E9%87%8C%E9%9D%A2%E7%9A%84%E5%85%83%E7%B4%A0">5、怎么删除 List（列表） 里面的元素</a></li>
+<li><a href="#6-list%E5%88%97%E8%A1%A8%E8%BF%90%E7%AE%97%E7%AC%A6">6、List（列表）运算符</a></li>
+<li><a href="#7-list-%E5%88%97%E8%A1%A8%E5%87%BD%E6%95%B0%E6%96%B9%E6%B3%95">7、List （列表）函数&amp;方法</a></li>
+<li><a href="#8-%E5%AE%9E%E4%BE%8B">8、实例</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dupl.github.io/gridea/post/Variable/">
+              <h3 class="post-title">
+                Variable
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b1b3d5e02fd883c8d79',
+    clientSecret: '7cd8d96a9db672953daac4c7219bb6d618cdd6a8',
+    repo: 'gridea',
+    owner: 'dupl',
+    admin: ['dupl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://dupl.github.io/gridea/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,246 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>10-2 | Gridea</title>
+<link rel="shortcut icon" href="https://dupl.github.io/gridea/favicon.ico?v=1744703986223">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://dupl.github.io/gridea/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="10-2 | Gridea - Atom Feed" href="https://dupl.github.io/gridea/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="二、构造(__new__)和初始化(__init__)
+通过之前的学习，我们已经知道定义一个类时，我们经常会通过 __init__(self) 的方法在实例化对象的时候，对属性进行设置。
+比如下面的例子：
+#!/usr/bin/env py..." />
+    <meta name="keywords" content="python" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dupl.github.io/gridea">
+  <img class="avatar" src="https://dupl.github.io/gridea/images/avatar.png?v=1744703986223" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://dupl.github.io/gridea" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              10-2
+            </h2>
+            <div class="post-info">
+              <span>
+                2025-02-20
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+                <a href="https://dupl.github.io/gridea/tag/uIwvvo8-6A_/" class="post-tag">
+                  # python
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h1 id="二-构造__new__和初始化__init__">二、构造(<code>__new__</code>)和初始化(<code>__init__</code>)</h1>
+<p>通过之前的学习，我们已经知道定义一个类时，我们经常会通过 <code>__init__(self)</code> 的方法在实例化对象的时候，对属性进行设置。</p>
+<p>比如下面的例子：</p>
+<pre><code class="language-python">#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
+
+class User(object):
+    def __init__(self, name, age):
+        self.name = name;
+        self.age = age;
+
+user=User('两点水',23)
+</code></pre>
+<p>实际上，创建一个类的过程是分为两步的，一步是创建类的对象，还有一步就是对类进行初始化。</p>
+<p><code>__new__</code> 是用来创建类并返回这个类的实例, 而<code>__init__</code> 只是将传入的参数来初始化该实例.<code>__new__</code> 在创建一个实例的过程中必定会被调用,但 <code>__init__</code> 就不一定，比如通过 pickle.load 的方式反序列化一个实例时就不会调用 <code>__init__</code> 方法。</p>
+<figure data-type="image" tabindex="1"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2019-10-14-Python%E7%B1%BB%E5%88%9B%E5%BB%BA%E7%9A%84%E8%BF%87%E7%A8%8B.png" alt="" loading="lazy"></figure>
+<p><code>def __new__(cls)</code> 是在 <code>def __init__(self)</code> 方法之前调用的，作用是返回一个实例对象。还有一点需要注意的是：<code>__new__</code> 方法总是需要返回该类的一个实例，而 <code>__init__</code>  不能返回除了 <code>None</code> 的任何值</p>
+<p>具体的示例：</p>
+<pre><code class="language-python">#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
+
+class User(object):
+    def __new__(cls, *args, **kwargs):
+        # 打印 __new__方法中的相关信息
+        print('调用了 def __new__ 方法')
+        print(args)
+        # 最后返回父类的方法
+        return super(User, cls).__new__(cls)
+
+    def __init__(self, name, age):
+        print('调用了 def __init__ 方法')
+        self.name = name
+        self.age = age
+
+
+if __name__ == '__main__':
+    usr = User('两点水', 23)
+</code></pre>
+<p>看看输出的结果：</p>
+<pre><code class="language-txt">调用了 def __new__ 方法
+('两点水', 23)
+调用了 def __init__ 方法
+</code></pre>
+<p>通过打印的结果来看，我们就可以知道一个类创建的过程是怎样的了，先是调用了 <code>__new__</code> 方法来创建一个对象，把参数传给 <code>__init__</code> 方法进行实例化。</p>
+<p>其实在实际开发中，很少会用到 <code>__new__</code> 方法，除非你希望能够控制类的创建。通常讲到 <code>__new__</code> ，都是牵扯到 <code>metaclass</code>(元类)的。</p>
+<p>当然当一个对象的生命周期结束的时候，析构函数 <code>__del__</code> 方法会被调用。但是这个方法是 Python 自己对对象进行垃圾回收的。</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E4%BA%8C-%E6%9E%84%E9%80%A0__new__%E5%92%8C%E5%88%9D%E5%A7%8B%E5%8C%96__init__">二、构造(<code>__new__</code>)和初始化(<code>__init__</code>)</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dupl.github.io/gridea/post/10-1/">
+              <h3 class="post-title">
+                10-1
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b1b3d5e02fd883c8d79',
+    clientSecret: '7cd8d96a9db672953daac4c7219bb6d618cdd6a8',
+    repo: 'gridea',
+    owner: 'dupl',
+    admin: ['dupl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://dupl.github.io/gridea/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,304 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>8-6 | Gridea</title>
+<link rel="shortcut icon" href="https://dupl.github.io/gridea/favicon.ico?v=1744703986223">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://dupl.github.io/gridea/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="8-6 | Gridea - Atom Feed" href="https://dupl.github.io/gridea/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="六、初始化函数
+1、什么是初始化函数
+初始化函数的意思是，当你创建一个实例的时候，这个函数就会被调用。
+比如：
+
+当代码在执行 a = ClassA() 的语句时，就自动调用了 __init__(self) 函数。
+而这个 __init__..." />
+    <meta name="keywords" content="python" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dupl.github.io/gridea">
+  <img class="avatar" src="https://dupl.github.io/gridea/images/avatar.png?v=1744703986223" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://dupl.github.io/gridea" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              8-6
+            </h2>
+            <div class="post-info">
+              <span>
+                2025-02-20
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://dupl.github.io/gridea/tag/uIwvvo8-6A_/" class="post-tag">
+                  # python
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h1 id="六-初始化函数">六、初始化函数</h1>
+<h2 id="1-什么是初始化函数">1、什么是初始化函数</h2>
+<p>初始化函数的意思是，当你创建一个实例的时候，这个函数就会被调用。</p>
+<p>比如：</p>
+<figure data-type="image" tabindex="1"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2019-10-09-071102.png" alt="" loading="lazy"></figure>
+<p>当代码在执行 <code>a = ClassA()</code> 的语句时，就自动调用了 <code>__init__(self)</code> 函数。</p>
+<p><strong>而这个 <code>__init__(self)</code>  函数就是初始化函数，也叫构造函数。</strong></p>
+<p>初始化函数的写法是固定的格式：中间是 <code>init</code>，意思是初始化，然后前后都要有【两个下划线】，然后 <code>__init__()</code> 的括号中，第一个参数一定要写上 <code>self</code>，不然会报错。</p>
+<p>构造函数（初始化函数）格式如下：</p>
+<pre><code class="language-python">def __init__(self,[...):
+</code></pre>
+<p>初始化函数一样可以传递参数的，例如：</p>
+<figure data-type="image" tabindex="2"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2019-10-09-073421.png" alt="" loading="lazy"></figure>
+<h2 id="2-析构函数">2、析构函数</h2>
+<p>竟然一个在创建的时候，会调用构造函数，那么理所当然，这个当一个类销毁的时候，就会调用析构函数。</p>
+<p>析构函数语法如下：</p>
+<pre><code class="language-python">def __del__(self,[...):
+</code></pre>
+<p>看下具体的示例：</p>
+<figure data-type="image" tabindex="3"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2019-10-09-084417.png" alt="" loading="lazy"></figure>
+<h2 id="3-python-定义类的历史遗留问题">3、Python 定义类的历史遗留问题</h2>
+<p>Python  在版本的迭代中，有一个关于类的历史遗留问题，就是新式类和旧式类的问题，具体先看以下的代码：</p>
+<pre><code class="language-python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+
+# 旧式类
+class OldClass:
+    pass
+
+# 新式类
+class NewClass(object):
+    pass
+
+</code></pre>
+<p>可以看到，这里使用了两者中不同的方式定义类，可以看到最大的不同就是，新式类继承了<code>object</code> 类，在 Python2 中，我们定义类的时候最好定义新式类，当然在 Python3 中不存在这个问题了，因为 Python3 中所有类都是新式类。</p>
+<p>那么新式类和旧式类有什么区别呢？</p>
+<p>运行下下面的那段代码：</p>
+<pre><code class="language-python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+
+# 旧式类
+class OldClass:
+    def __init__(self, account, name):
+        self.account = account
+        self.name = name
+
+
+# 新式类
+class NewClass(object):
+    def __init__(self, account, name):
+        self.account = account
+        self.name = name
+
+
+if __name__ == '__main__':
+    old_class = OldClass(111111, 'OldClass')
+    print(old_class)
+    print(type(old_class))
+    print(dir(old_class))
+    print('\n')
+    new_class = NewClass(222222, 'NewClass')
+    print(new_class)
+    print(type(new_class))
+    print(dir(new_class))
+
+</code></pre>
+<p>这是 python 2.7 运行的结果：</p>
+<pre><code>/Users/twowater/dev/python/test/venv/bin/python /Users/twowater/dev/python/test/com/twowater/test.py
+&lt;__main__.OldClass instance at 0x109a50560&gt;
+&lt;type 'instance'&gt;
+['__doc__', '__init__', '__module__', 'account', 'name']
+
+
+&lt;__main__.NewClass object at 0x109a4b150&gt;
+&lt;class '__main__.NewClass'&gt;
+['__class__', '__delattr__', '__dict__', '__doc__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'account', 'name']
+
+Process finished with exit code 0
+
+</code></pre>
+<p>这是 Python 3.6 运行的结果：</p>
+<pre><code>/usr/local/bin/python3.6 /Users/twowater/dev/python/test/com/twowater/test.py
+&lt;__main__.OldClass object at 0x1038ba630&gt;
+&lt;class '__main__.OldClass'&gt;
+['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'account', 'name']
+
+
+&lt;__main__.NewClass object at 0x103e3c9e8&gt;
+&lt;class '__main__.NewClass'&gt;
+['__class__', '__delattr__', '__dict__', '__dir__', '__doc__', '__eq__', '__format__', '__ge__', '__getattribute__', '__gt__', '__hash__', '__init__', '__init_subclass__', '__le__', '__lt__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', 'account', 'name']
+
+Process finished with exit code 0
+
+</code></pre>
+<p>仔细观察输出的结果，对比一下，就能观察出来，注意喔，Pyhton3 中输出的结果是一模一样的，因为Python3 中没有新式类旧式类的问题。</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E5%85%AD-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%87%BD%E6%95%B0">六、初始化函数</a>
+<ul>
+<li><a href="#1-%E4%BB%80%E4%B9%88%E6%98%AF%E5%88%9D%E5%A7%8B%E5%8C%96%E5%87%BD%E6%95%B0">1、什么是初始化函数</a></li>
+<li><a href="#2-%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0">2、析构函数</a></li>
+<li><a href="#3-python-%E5%AE%9A%E4%B9%89%E7%B1%BB%E7%9A%84%E5%8E%86%E5%8F%B2%E9%81%97%E7%95%99%E9%97%AE%E9%A2%98">3、Python 定义类的历史遗留问题</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dupl.github.io/gridea/post/8-5/">
+              <h3 class="post-title">
+                8-5
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b1b3d5e02fd883c8d79',
+    clientSecret: '7cd8d96a9db672953daac4c7219bb6d618cdd6a8',
+    repo: 'gridea',
+    owner: 'dupl',
+    admin: ['dupl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://dupl.github.io/gridea/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

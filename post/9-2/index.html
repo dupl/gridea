@@ -1,0 +1,273 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>9-2 | Gridea</title>
+<link rel="shortcut icon" href="https://dupl.github.io/gridea/favicon.ico?v=1744703986223">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://dupl.github.io/gridea/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="9-2 | Gridea - Atom Feed" href="https://dupl.github.io/gridea/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="二、模块的使用
+1、import
+Python 模块的使用跟其他编程语言也是类似的。你要使用某个模块，在使用之前，必须要导入这个模块。导入模块我们使用关键字 import。
+import 的语法基本如下：
+import module1[, ..." />
+    <meta name="keywords" content="python" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dupl.github.io/gridea">
+  <img class="avatar" src="https://dupl.github.io/gridea/images/avatar.png?v=1744703986223" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://dupl.github.io/gridea" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              9-2
+            </h2>
+            <div class="post-info">
+              <span>
+                2025-02-20
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://dupl.github.io/gridea/tag/uIwvvo8-6A_/" class="post-tag">
+                  # python
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h1 id="二-模块的使用">二、模块的使用</h1>
+<h2 id="1-import">1、import</h2>
+<p>Python 模块的使用跟其他编程语言也是类似的。你要使用某个模块，在使用之前，必须要导入这个模块。导入模块我们使用关键字 <code>import</code>。</p>
+<p><code>import</code> 的语法基本如下：</p>
+<pre><code class="language-python">import module1[, module2[,... moduleN]
+</code></pre>
+<p>比如我们使用标准库模块中的 math 模块。当解释器遇到 <code>import</code> 语句，如果模块在当前的搜索路径就会被导入。</p>
+<pre><code class="language-python">#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
+
+import math
+
+_author_ = '两点水'
+
+print(math.pi)
+</code></pre>
+<p>输出的结果：</p>
+<pre><code class="language-txt">3.141592653589793
+</code></pre>
+<p>一个模块只会被导入一次，不管你执行了多少次 import。这样可以防止导入模块被一遍又一遍地执行。</p>
+<p>当我们使用 import 语句的时候，Python 解释器是怎样找到对应的文件的呢？</p>
+<p>这就涉及到 Python 的搜索路径，搜索路径是由一系列目录名组成的，Python 解释器就依次从这些目录中去寻找所引入的模块。这看起来很像环境变量，事实上，也可以通过定义环境变量的方式来确定搜索路径。搜索路径是在 Python 编译或安装的时候确定的，安装新的库应该也会修改。搜索路径被存储在sys 模块中的 path 变量 。</p>
+<p>因此，我们可以查一下路径：</p>
+<pre><code class="language-python">#!/usr/bin/env python
+# -*- coding: UTF-8 -*-
+
+import sys
+
+print(sys.path)
+</code></pre>
+<p>输出结果：</p>
+<pre><code class="language-txt">['C:\\Users\\Administrator\\Desktop\\Python\\Python8Code', 'G:\\PyCharm 2017.1.4\\helpers\\pycharm', 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python36\\python36.zip', 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python36\\DLLs', 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python36\\lib', 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python36', 'C:\\Users\\Administrator\\AppData\\Local\\Programs\\Python\\Python36\\lib\\site-packages', 'C:\\Users\\Administrator\\Desktop\\Python\\Python8Code\\com\\Learn\\module\\sys']
+
+</code></pre>
+<h2 id="2-fromimport">2、from···import</h2>
+<p>有没有想过，怎么直接导入某个模块中的属性和方法呢？</p>
+<p>Python 中，导入一个模块的方法我们使用的是 <code>import</code> 关键字，这样做是导入了这个模块，这里需要注意了，这样做只是导入了模块，并没有导入模块中具体的某个属性或方法的。而我们想直接导入某个模块中的某一个功能，也就是属性和方法的话，我们可以使用 <code>from···import</code> 语句。</p>
+<p>语法如下：</p>
+<pre><code class="language-python">from modname import name1[, name2[, ... nameN]]
+</code></pre>
+<p>看完简介后可能会想， <code>from···import</code>  和 <code>import</code> 方法有啥区别呢？</p>
+<p>想知道区别是什么，观察下面两个例子：</p>
+<p><code>import</code> 导入 sys 模块，然后使用 version 属性</p>
+<figure data-type="image" tabindex="1"><img src="http://twowaterimage.oss-cn-beijing.aliyuncs.com/2019-10-14-from%C2%B7%C2%B7%C2%B7import%E5%92%8C%20import%E7%9A%84%E5%8C%BA%E5%88%AB1.png" alt="" loading="lazy"></figure>
+<p><code>from···import</code> 直接导入 version 属性</p>
+<figure data-type="image" tabindex="2"><img src="media/from%C2%B7%C2%B7%C2%B7import%E5%92%8C%20import%E7%9A%84%E5%8C%BA%E5%88%AB2-2.png" alt="from···import和 import的区别2" loading="lazy"></figure>
+<h2 id="3-from-import">3、from ··· import *</h2>
+<p>通过上面的学习，我们知道了 <code>from sys import version</code> 可以直接导入 version 属性。</p>
+<p>但是如果我们想使用其他的属性呢？</p>
+<p>比如使用 sys 模块中的 <code>executable</code> ，难道又要写多一句 <code>from sys import executable</code> ,两个还好，如果三个，四个呢？</p>
+<p>难道要一直这样写下去？</p>
+<p>这时候就需要 <code>from ··· import *</code> 语句了，这个语句可以把某个模块中的所有方法属性都导入。比如：</p>
+<pre><code class="language-python">#!/usr/bin/env python3
+# -*- coding: UTF-8 -*-
+
+from sys import *
+
+print(version)
+print(executable)
+
+</code></pre>
+<p>输出的结果为：</p>
+<pre><code class="language-txt">3.6.1 (v3.6.1:69c0db5, Mar 21 2017, 18:41:36) [MSC v.1900 64 bit (AMD64)]
+C:\Users\Administrator\AppData\Local\Programs\Python\Python36\python.exe
+</code></pre>
+<p>注意：这提供了一个简单的方法来导入一个模块中的所有方法属性。然而这种声明不该被过多地使用。</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E4%BA%8C-%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BD%BF%E7%94%A8">二、模块的使用</a>
+<ul>
+<li><a href="#1-import">1、import</a></li>
+<li><a href="#2-fromimport">2、from···import</a></li>
+<li><a href="#3-from-import">3、from ··· import *</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dupl.github.io/gridea/post/9-1/">
+              <h3 class="post-title">
+                9-1
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b1b3d5e02fd883c8d79',
+    clientSecret: '7cd8d96a9db672953daac4c7219bb6d618cdd6a8',
+    repo: 'gridea',
+    owner: 'dupl',
+    admin: ['dupl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://dupl.github.io/gridea/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

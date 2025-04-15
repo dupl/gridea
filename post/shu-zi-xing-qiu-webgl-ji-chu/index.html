@@ -1,0 +1,232 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>【数字星球】WebGL基础 | Gridea</title>
+<link rel="shortcut icon" href="https://dupl.github.io/gridea/favicon.ico?v=1744703986223">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://dupl.github.io/gridea/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="【数字星球】WebGL基础 | Gridea - Atom Feed" href="https://dupl.github.io/gridea/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="webGL被视为前端未来几年发展中比较大的增长点。许多团队在涉及到数字工业，农业，城市，园区，交通时最先想到的前端解决方案就是WebGL。
+
+一、组成 Threejs 应用的几个重要组件
+场景
+场景就是舞台,可以吧任何显示的东西放在场景中的..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dupl.github.io/gridea">
+  <img class="avatar" src="https://dupl.github.io/gridea/images/avatar.png?v=1744703986223" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://dupl.github.io/gridea" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              【数字星球】WebGL基础
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-10-19
+              </span>
+              <span>
+                1 min read
+              </span>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://dupl.github.io/gridea/post-images/shu-zi-xing-qiu-webgl-ji-chu.jpeg" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <p>webGL被视为前端未来几年发展中比较大的增长点。许多团队在涉及到数字工业，农业，城市，园区，交通时最先想到的前端解决方案就是WebGL。</p>
+<!-- more -->
+<h1 id="一-组成-threejs-应用的几个重要组件">一、组成 Threejs 应用的几个重要组件</h1>
+<h3 id="场景">场景</h3>
+<p>场景就是舞台,可以吧任何显示的东西放在场景中的任何位置</p>
+<pre><code class="language-javascript">THREE.Scene = funciton()
+</code></pre>
+<h3 id="相机">相机</h3>
+<p>相机就是拍摄场景物体的镜头</p>
+<ul>
+<li>透视相机</li>
+<li>正投影相机(远处近处一样大,如CAD图纸)</li>
+</ul>
+<pre><code class="language-javascript">THREE.PerspectiveCamera = function(fov,aspect,near,far);
+</code></pre>
+<ol>
+<li>视角fov:眼睛查看世界的角度</li>
+<li>近平面near:近处裁面的距离</li>
+<li>aspect:宽高的比例</li>
+<li>far:远平面</li>
+</ol>
+<h3 id="渲染器">渲染器</h3>
+<p>将场景的内容显示在屏幕上 THREE.WebGLRenderer()</p>
+<h3 id="几何体">几何体</h3>
+<p>几何体就是场景中现实的对象</p>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E4%B8%80-%E7%BB%84%E6%88%90-threejs-%E5%BA%94%E7%94%A8%E7%9A%84%E5%87%A0%E4%B8%AA%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6">一、组成 Threejs 应用的几个重要组件</a><br>
+*
+<ul>
+<li><a href="#%E5%9C%BA%E6%99%AF">场景</a></li>
+<li><a href="#%E7%9B%B8%E6%9C%BA">相机</a></li>
+<li><a href="#%E6%B8%B2%E6%9F%93%E5%99%A8">渲染器</a></li>
+<li><a href="#%E5%87%A0%E4%BD%95%E4%BD%93">几何体</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dupl.github.io/gridea/post/when-i-am-a-CEO/">
+              <h3 class="post-title">
+                【如果我是CEO】从0开始建立一套开发体系 -- 技术架构选型
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b1b3d5e02fd883c8d79',
+    clientSecret: '7cd8d96a9db672953daac4c7219bb6d618cdd6a8',
+    repo: 'gridea',
+    owner: 'dupl',
+    admin: ['dupl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://dupl.github.io/gridea/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

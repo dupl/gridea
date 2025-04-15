@@ -1,0 +1,367 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Dict | Gridea</title>
+<link rel="shortcut icon" href="https://dupl.github.io/gridea/favicon.ico?v=1744703986223">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://dupl.github.io/gridea/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Dict | Gridea - Atom Feed" href="https://dupl.github.io/gridea/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="一、字典(Dictionary)
+1、什么是 dict（字典）
+上一章节，我们学习了列表（List） 和 元组（tuple） 来表示有序集合。
+而我们在讲列表（list）的时候，我们用了列表（list） 来存储用户的姓名。
+name = [..." />
+    <meta name="keywords" content="python" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dupl.github.io/gridea">
+  <img class="avatar" src="https://dupl.github.io/gridea/images/avatar.png?v=1744703986223" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://dupl.github.io/gridea" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Dict
+            </h2>
+            <div class="post-info">
+              <span>
+                2025-02-20
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+                <a href="https://dupl.github.io/gridea/tag/uIwvvo8-6A_/" class="post-tag">
+                  # python
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h1 id="一-字典dictionary">一、字典(Dictionary)</h1>
+<h2 id="1-什么是-dict字典">1、什么是 dict（字典）</h2>
+<p>上一章节，我们学习了列表（List） 和 元组（tuple） 来表示有序集合。</p>
+<p>而我们在讲列表（list）的时候，我们用了列表（list） 来存储用户的姓名。</p>
+<pre><code class="language-python">name = ['一点水', '两点水', '三点水', '四点水', '五点水']
+</code></pre>
+<p>那么如果我们为了方便联系这些童鞋，要把电话号码也添加进去，该怎么做呢？</p>
+<p>用 list 可以这样子解决：</p>
+<pre><code class="language-python">name = [['一点水', '131456780001'], ['两点水', '131456780002'], ['三点水', '131456780003'], ['四点水', '131456780004'], ['五点水', '131456780005']]
+</code></pre>
+<p>但是这样很不方便，我们把电话号码记录下来，就是为了有什么事能及时联系上这些童鞋。</p>
+<p>如果用列表来存储这些，列表越长，我们查找起来耗时就越长。</p>
+<p>这时候就可以用 dict （字典）来表示了，Python 内置了 字典（dict），dict 全称 dictionary，如果学过 Java ，字典就相当于 JAVA 中的 map，使用键-值（key-value）存储，具有极快的查找速度。</p>
+<pre><code class="language-python">name = {'一点水': '131456780001', '两点水': '131456780002', '三点水': '131456780003', '四点水': '131456780004', '五点水': '131456780005'}
+</code></pre>
+<h2 id="2-dict-字典的创建">2、dict （字典）的创建</h2>
+<p>字典是另一种可变容器模型，且可存储任意类型对象。</p>
+<p>字典的每个键值(key=&gt;value)对用冒号(:)分割，每个对之间用逗号(,)分割，整个字典包括在花括号({})中 ,格式如下所示：</p>
+<pre><code class="language-python">dict = {key1 : value1, key2 : value2 }
+</code></pre>
+<p>注意：键必须是唯一的，但值则不必。值可以取任何数据类型，但键必须是不可变的。</p>
+<p>创建 dict（字典）实例：</p>
+<pre><code class="language-python">dict1={'liangdianshui':'111111' ,'twowater':'222222' ,'两点水':'333333'}
+dict2={'abc':1234,1234:'abc'}
+</code></pre>
+<h2 id="3-访问-dict-字典">3、访问 dict （字典）</h2>
+<p>我们知道了怎么创建列表了，回归到一开始提出到的问题，为什么使用字典能让我们很快的找出某个童鞋的电话呢？</p>
+<pre><code class="language-python">name = {'一点水': '131456780001', '两点水': '131456780002', '三点水': '131456780003', '四点水': '131456780004', '五点水': '131456780005'}
+
+print(name['两点水'])
+</code></pre>
+<p>输出的结果：</p>
+<pre><code>131456780002
+</code></pre>
+<p>可以看到，如果你知道某个人的名字，也就是 key 值， 就能很快的查找到他对应的电话号码，也就是 Value 。</p>
+<p>这里需要注意的一点是：如果字典中没有这个键，是会报错的。</p>
+<h2 id="4-修改-dict-字典">4、修改 dict （字典）</h2>
+<p>向字典添加新内容的方法是增加新的键/值对，修改或删除已有键/值对</p>
+<pre><code class="language-python">#-*-coding:utf-8-*-
+dict1={'liangdianshui':'111111' ,'twowater':'222222' ,'两点水':'333333'}
+print(dict1)
+# 新增一个键值对
+dict1['jack']='444444'
+print(dict1)
+# 修改键值对
+dict1['liangdianshui']='555555'
+print(dict1)
+</code></pre>
+<p>输出的结果：</p>
+<pre><code>{'liangdianshui': '111111', 'twowater': '222222', '两点水': '333333'}
+{'liangdianshui': '111111', 'twowater': '222222', '两点水': '333333', 'jack': '444444'}
+{'liangdianshui': '555555', 'twowater': '222222', '两点水': '333333', 'jack': '444444'}
+</code></pre>
+<h2 id="5-删除-dict-字典">5、删除 dict （字典）</h2>
+<p>通过 <code>del</code> 可以删除 dict （字典）中的某个元素，也能删除 dict （字典）</p>
+<p>通过调用 <code>clear()</code> 方法可以清除字典中的所有元素</p>
+<pre><code class="language-python">#-*-coding:utf-8-*-
+dict1={'liangdianshui':'111111' ,'twowater':'222222' ,'两点水':'333333'}
+print(dict1)
+# 通过 key 值，删除对应的元素
+del dict1['twowater']
+print(dict1)
+# 删除字典中的所有元素
+dict1.clear()
+print(dict1)
+# 删除字典
+del dict1
+</code></pre>
+<p>输出的结果：</p>
+<pre><code>{'liangdianshui': '111111', 'twowater': '222222', '两点水': '333333'}
+{'liangdianshui': '111111', '两点水': '333333'}
+{}
+</code></pre>
+<h2 id="6-dict-字典使用时注意的事项">6、 dict （字典）使用时注意的事项</h2>
+<p>(1) dict （字典）是不允许一个键创建两次的，但是在创建 dict （字典）的时候如果出现了一个键值赋予了两次，会以最后一次赋予的值为准</p>
+<p>例如：</p>
+<pre><code class="language-python">#-*-coding:utf-8-*-
+dict1={'liangdianshui':'111111' ,'twowater':'222222' ,'两点水':'333333','twowater':'444444'}
+print(dict1)
+print(dict1['twowater'])
+</code></pre>
+<p>输出的结果：</p>
+<pre><code>{'liangdianshui': '111111', 'twowater': '444444', '两点水': '333333'}
+444444
+</code></pre>
+<p>(2) dict （字典）键必须不可变，可是键可以用数字，字符串或元组充当，但是就是不能使用列表</p>
+<p>例如：</p>
+<pre><code class="language-python">#-*-coding:utf-8-*-
+dict1={'liangdianshui':'111111' ,123:'222222' ,(123,'tom'):'333333','twowater':'444444'}
+print(dict1)
+</code></pre>
+<p>输出结果：</p>
+<pre><code>{'liangdianshui': '111111', 123: '222222', (123, 'tom'): '333333', 'twowater': '444444'}
+</code></pre>
+<p>(3) dict 内部存放的顺序和 key 放入的顺序是没有任何关系</p>
+<p>和 list 比较，dict 有以下几个特点：</p>
+<ul>
+<li>
+<p>查找和插入的速度极快，不会随着key的增加而变慢</p>
+</li>
+<li>
+<p>需要占用大量的内存，内存浪费多</p>
+</li>
+</ul>
+<p>而list相反：</p>
+<ul>
+<li>
+<p>查找和插入的时间随着元素的增加而增加</p>
+</li>
+<li>
+<p>占用空间小，浪费内存很少</p>
+</li>
+</ul>
+<h2 id="7-dict-字典-的函数和方法">7、dict （字典） 的函数和方法</h2>
+<table>
+<thead>
+<tr>
+<th>方法和函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>len(dict)</td>
+<td>计算字典元素个数</td>
+</tr>
+<tr>
+<td>str(dict)</td>
+<td>输出字典可打印的字符串表示</td>
+</tr>
+<tr>
+<td>type(variable)</td>
+<td>返回输入的变量类型，如果变量是字典就返回字典类型</td>
+</tr>
+<tr>
+<td>dict.clear()</td>
+<td>删除字典内所有元素</td>
+</tr>
+<tr>
+<td>dict.copy()</td>
+<td>返回一个字典的浅复制</td>
+</tr>
+<tr>
+<td>dict.values()</td>
+<td>以列表返回字典中的所有值</td>
+</tr>
+<tr>
+<td>popitem()</td>
+<td>随机返回并删除字典中的一对键和值</td>
+</tr>
+<tr>
+<td>dict.items()</td>
+<td>以列表返回可遍历的(键, 值) 元组数组</td>
+</tr>
+</tbody>
+</table>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E4%B8%80-%E5%AD%97%E5%85%B8dictionary">一、字典(Dictionary)</a>
+<ul>
+<li><a href="#1-%E4%BB%80%E4%B9%88%E6%98%AF-dict%E5%AD%97%E5%85%B8">1、什么是 dict（字典）</a></li>
+<li><a href="#2-dict-%E5%AD%97%E5%85%B8%E7%9A%84%E5%88%9B%E5%BB%BA">2、dict （字典）的创建</a></li>
+<li><a href="#3-%E8%AE%BF%E9%97%AE-dict-%E5%AD%97%E5%85%B8">3、访问 dict （字典）</a></li>
+<li><a href="#4-%E4%BF%AE%E6%94%B9-dict-%E5%AD%97%E5%85%B8">4、修改 dict （字典）</a></li>
+<li><a href="#5-%E5%88%A0%E9%99%A4-dict-%E5%AD%97%E5%85%B8">5、删除 dict （字典）</a></li>
+<li><a href="#6-dict-%E5%AD%97%E5%85%B8%E4%BD%BF%E7%94%A8%E6%97%B6%E6%B3%A8%E6%84%8F%E7%9A%84%E4%BA%8B%E9%A1%B9">6、 dict （字典）使用时注意的事项</a></li>
+<li><a href="#7-dict-%E5%AD%97%E5%85%B8-%E7%9A%84%E5%87%BD%E6%95%B0%E5%92%8C%E6%96%B9%E6%B3%95">7、dict （字典） 的函数和方法</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dupl.github.io/gridea/post/tuple/">
+              <h3 class="post-title">
+                tuple
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b1b3d5e02fd883c8d79',
+    clientSecret: '7cd8d96a9db672953daac4c7219bb6d618cdd6a8',
+    repo: 'gridea',
+    owner: 'dupl',
+    admin: ['dupl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://dupl.github.io/gridea/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

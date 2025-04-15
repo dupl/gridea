@@ -1,0 +1,270 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>6-4 | Gridea</title>
+<link rel="shortcut icon" href="https://dupl.github.io/gridea/favicon.ico?v=1744703986223">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://dupl.github.io/gridea/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="6-4 | Gridea - Atom Feed" href="https://dupl.github.io/gridea/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="四、函数传值问题
+先看一个例子：
+# -*- coding: UTF-8 -*-
+def chagne_number( b ):
+    b = 1000
+
+b = 1
+chagne_number(b)
+print( b )
+
+最后输出的结..." />
+    <meta name="keywords" content="python" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="//cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.5.1/build/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://dupl.github.io/gridea">
+  <img class="avatar" src="https://dupl.github.io/gridea/images/avatar.png?v=1744703986223" alt="">
+  </a>
+  <h1 class="site-title">
+    Gridea
+  </h1>
+  <p class="site-description">
+    温故而知新
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="https://dupl.github.io/gridea" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="https://dupl.github.io/gridea/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              6-4
+            </h2>
+            <div class="post-info">
+              <span>
+                2025-02-20
+              </span>
+              <span>
+                4 min read
+              </span>
+              
+                <a href="https://dupl.github.io/gridea/tag/uIwvvo8-6A_/" class="post-tag">
+                  # python
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content" v-pre>
+                <h1 id="四-函数传值问题">四、函数传值问题</h1>
+<p>先看一个例子：</p>
+<pre><code class="language-python"># -*- coding: UTF-8 -*-
+def chagne_number( b ):
+    b = 1000
+
+b = 1
+chagne_number(b)
+print( b )
+</code></pre>
+<p>最后输出的结果为：</p>
+<pre><code class="language-txt">1
+</code></pre>
+<p>先看看运行的结果？</p>
+<p>想一下为什么打印的结果是 1 ，而不是 1000 ？</p>
+<p>其实把问题归根结底就是，为什么通过函数 <code>chagne_number</code> 没有更改到 b 的值？</p>
+<p>这个问题很多编程语言都会讲到，原理解释也是差不多的。</p>
+<p>这里主要是函数参数的传递中，传递的是类型对象，之前也介绍了 Python 中基本的数据类型等。而这些类型对象可以分为可更改类型和不可更改的类型</p>
+<p><strong>在 Python 中，字符串，整形，浮点型，tuple 是不可更改的对象，而 list ， dict 等是可以更改的对象。</strong></p>
+<p>例如：</p>
+<p><strong>不可更改的类型</strong>：变量赋值 <code>a = 1</code>，其实就是生成一个整形对象 1 ，然后变量 a 指向 1，当 <code>a = 1000</code> 其实就是再生成一个整形对象 1000，然后改变 a 的指向，不再指向整形对象 1 ，而是指向 1000，最后 1 会被丢弃</p>
+<p><strong>可更改的类型</strong>：变量赋值 <code>a = [1,2,3,4,5,6]</code> ，就是生成一个对象 list ，list 里面有 6 个元素，而变量 a 指向 list ，<code>a[2] = 5</code>则是将 list a 的第三个元素值更改,这里跟上面是不同的，并不是将 a 重新指向，而是直接修改 list 中的元素值。</p>
+<figure data-type="image" tabindex="1"><img src="http://upload-images.jianshu.io/upload_images/2136918-31b1031d75e1cec9?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="指向问题" loading="lazy"></figure>
+<p>这也将影响到函数中参数的传递了：</p>
+<p><strong>不可更改的类型</strong>：类似 c++ 的值传递，如 整数、字符串、元组。如fun（a），传递的只是 a 的值，没有影响 a 对象本身。比如在 fun（a）内部修改 a 的值，只是修改另一个复制的对象，不会影响 a 本身。</p>
+<p><strong>可更改的类型</strong>：类似 c++ 的引用传递，如 列表，字典。如 fun（a），则是将 a 真正的传过去，修改后 fun 外部的 a 也会受影响</p>
+<p>因此，在一开始的例子中，<code>b = 1</code>,创建了一个整形对象 1 ，变量 b 指向了这个对象，然后通过函数 chagne_number 时，按传值的方式复制了变量 b ，传递的只是 b 的值，并没有影响到 b 的本身。具体可以看下修改后的实例，通过打印的结果更好的理解。</p>
+<pre><code class="language-python"># -*- coding: UTF-8 -*-
+def chagne_number( b ):
+    print('函数中一开始 b 的值：{}' .format( b ) )
+    b = 1000
+    print('函数中 b 赋值后的值：{}' .format( b ) )
+
+
+b = 1
+chagne_number( b )
+print( '最后输出 b 的值：{}' .format( b )  )
+
+
+</code></pre>
+<p>打印的结果：</p>
+<pre><code class="language-txt">函数中一开始 b 的值：1
+函数中 b 赋值后的值：1000
+最后输出 b 的值：1
+</code></pre>
+<p>当然，如果参数中的是可更改的类型，那么调用了这个函数后，原来的值也会被更改，具体实例如下：</p>
+<pre><code class="language-python"># -*- coding: UTF-8 -*-
+
+def chagne_list( b ):
+    print('函数中一开始 b 的值：{}' .format( b ) )
+    b.append(1000)
+    print('函数中 b 赋值后的值：{}' .format( b ) )
+
+
+b = [1,2,3,4,5]
+chagne_list( b )
+print( '最后输出 b 的值：{}' .format( b )  )
+</code></pre>
+<p>输出的结果：</p>
+<pre><code class="language-txt">函数中一开始 b 的值：[1, 2, 3, 4, 5]
+函数中 b 赋值后的值：[1, 2, 3, 4, 5, 1000]
+最后输出 b 的值：[1, 2, 3, 4, 5, 1000]
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li><a href="#%E5%9B%9B-%E5%87%BD%E6%95%B0%E4%BC%A0%E5%80%BC%E9%97%AE%E9%A2%98">四、函数传值问题</a></li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://dupl.github.io/gridea/post/6-3/">
+              <h3 class="post-title">
+                6-3
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '9b1b3d5e02fd883c8d79',
+    clientSecret: '7cd8d96a9db672953daac4c7219bb6d618cdd6a8',
+    repo: 'gridea',
+    owner: 'dupl',
+    admin: ['dupl'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://dupl.github.io/gridea/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
